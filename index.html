@@ -14,12 +14,14 @@
 
         /* Header Styles */
         header {
-            background-color: #1a1a1a;
-            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            padding: 1.2rem 2rem;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .header-content {
@@ -32,44 +34,413 @@
 
         .logo {
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: bold;
             text-decoration: none;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
         }
 
         .nav-menu {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .nav-menu a {
             color: white;
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #06b6d4;
+            transition: width 0.3s ease;
         }
 
         .nav-menu a:hover {
-            color: #00ff00;
+            color: #06b6d4;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
         }
 
         .download-btn {
-            background-color: #00ff00;
-            color: black;
-            padding: 0.5rem 1rem;
+            background-color: #06b6d4;
+            color: #1e293b;
+            padding: 0.7rem 1.5rem;
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .download-btn:hover {
+            background-color: #0891b2;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
         }
 
         /* Main Content */
         main {
-            margin-top: 80px;
+            margin-top: 0;
             min-height: calc(100vh - 80px - 200px);
+        }
+
+        /* Banner Styles */
+        .banner {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(6, 182, 212, 0.2) 0%, transparent 100%);
+            z-index: 1;
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .banner h1 {
+            color: white;
+            font-size: 8.5rem;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+
+        .banner h1 span {
+            color: #06b6d4;
+        }
+
+        .banner p {
+            color: #cccccc;
+            font-size: 1.8rem;
+            margin-bottom: 3rem;
+        }
+
+        .banner-btn {
+            background-color: #06b6d4;
+            color: #1e293b;
+            padding: 1.5rem 3rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.4rem;
+            transition: transform 0.3s ease;
+        }
+
+        .banner-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Tools Section Styles */
+        .tools-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+        }
+
+        .tools-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .tools-section h2 {
+            font-size: 3.5rem;
+            margin-bottom: 3rem;
+            color: #06b6d4;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .tool-card {
+            background: linear-gradient(135deg, #2d3748 0%, #1e293b 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            border-color: #06b6d4;
+        }
+
+        .tool-card h3 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .tool-card p {
+            color: #cccccc;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Growth Section Styles */
+        .growth-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .growth-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(6, 182, 212, 0.2) 0%, transparent 100%);
+            z-index: 1;
+        }
+
+        .growth-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+        }
+
+        .growth-text {
+            flex: 0.8;
+            text-align: left;
+        }
+
+        .growth-image {
+            flex: 1.2;
+            max-width: 700px;
+        }
+
+        .growth-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .growth-image img:hover {
+            transform: scale(1.02);
+        }
+
+        .growth-section h2 {
+            font-size: 4.5rem;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .growth-section h2 span {
+            color: #06b6d4;
+        }
+
+        .growth-section p {
+            font-size: 1.8rem;
+            color: #ffffff;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+        }
+
+        .growth-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: #06b6d4;
+            color: #1e293b;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .growth-btn:hover {
+            transform: translateX(5px);
+            background-color: #0891b2;
+        }
+
+        .growth-btn svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .growth-btn:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* Potential Section Styles */
+        .potential-section {
+            padding: 6rem 2rem;
+            background: #000000;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .potential-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(6, 182, 212, 0.1) 0%, transparent 100%);
+            z-index: 1;
+        }
+
+        .potential-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .potential-section h2 {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .potential-section h2 span {
+            color: #06b6d4;
+        }
+
+        .potential-features {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .potential-feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .potential-feature:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #06b6d4;
+        }
+
+        .potential-feature-icon {
+            background: #06b6d4;
+            color: #1e293b;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .potential-feature-icon svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        .potential-feature-content {
+            text-align: left;
+        }
+
+        .potential-feature h3 {
+            color: #06b6d4;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .potential-feature p {
+            color: #ffffff;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .potential-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: #06b6d4;
+            color: #1e293b;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            margin-top: 3rem;
+        }
+
+        .potential-btn:hover {
+            transform: translateY(-3px);
+            background-color: #0891b2;
+        }
+
+        .potential-btn svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .potential-btn:hover svg {
+            transform: translateY(-3px);
         }
 
         /* Footer Styles */
         footer {
-            background-color: #1a1a1a;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             color: white;
             padding: 2rem;
             margin-top: auto;
@@ -85,7 +456,7 @@
 
         .footer-section h3 {
             margin-bottom: 1rem;
-            color: #00ff00;
+            color: #06b6d4;
         }
 
         .footer-section ul {
@@ -102,7 +473,7 @@
         }
 
         .footer-section ul li a:hover {
-            color: #00ff00;
+            color: #06b6d4;
         }
 
         .social-links {
@@ -117,14 +488,14 @@
         }
 
         .social-links a:hover {
-            color: #00ff00;
+            color: #06b6d4;
         }
 
         .footer-bottom {
             text-align: center;
             margin-top: 2rem;
             padding-top: 1rem;
-            border-top: 1px solid #333;
+            border-top: 1px solid rgba(6, 182, 212, 0.2);
         }
     </style>
 </head>
@@ -133,17 +504,106 @@
         <div class="header-content">
             <a href="#" class="logo">Streamer Tips</a>
             <nav class="nav-menu">
-                <a href="#">Home</a>
-                <a href="#">About Us</a>
-                <!-- <a href="#">Voicemod Key</a> -->
-                <a href="#">Creator Tools</a>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="creator-tools.html">Creator Tools</a>
             </nav>
             <a href="#" class="download-btn">Monthly Streamers</a>
         </div>
     </header>
 
     <main>
-        <!-- Main content will go here -->
+        <section class="banner">
+            <div class="banner-content">
+                <h1>We are here to help <span>YOU</span> grow</h1>
+                <p>Join our community of successful streamers and take your content to the next level</p>
+            </div>
+        </section>
+
+        <section class="tools-section">
+            <div class="tools-content">
+                <h2>Find your tools to grow</h2>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <h3>Voice Enhancement</h3>
+                        <p>Professional voice filters and effects to make your stream stand out</p>
+                    </div>
+                    <div class="tool-card">
+                        <h3>Sound Library</h3>
+                        <p>Access thousands of sound effects and memes to engage your audience</p>
+                    </div>
+                    <div class="tool-card">
+                        <h3>Creator Tools</h3>
+                        <p>Advanced tools and features to enhance your streaming experience</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="growth-section">
+            <div class="growth-content">
+                <div class="growth-text">
+                    <h2>Everybody should have the <span>Ability</span> to Grow</h2>
+                    <p>We believe in empowering every creator with the tools and resources they need to succeed in their streaming journey</p>
+                    <a href="#" class="growth-btn">
+                        Get Started
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="growth-image">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Streamer setup with professional equipment">
+                </div>
+            </div>
+        </section>
+
+        <section class="potential-section">
+            <div class="potential-content">
+                <h2>Reach your <span>potential</span> with our help</h2>
+                <div class="potential-features">
+                    <div class="potential-feature">
+                        <div class="potential-feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                            </svg>
+                        </div>
+                        <div class="potential-feature-content">
+                            <h3>Expert Guidance</h3>
+                            <p>Access professional tips and strategies from experienced streamers who have already achieved success</p>
+                        </div>
+                    </div>
+                    <div class="potential-feature">
+                        <div class="potential-feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                        </div>
+                        <div class="potential-feature-content">
+                            <h3>Community Support</h3>
+                            <p>Join a community of like-minded creators who support and encourage each other's growth</p>
+                        </div>
+                    </div>
+                    <div class="potential-feature">
+                        <div class="potential-feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                            </svg>
+                        </div>
+                        <div class="potential-feature-content">
+                            <h3>Growth Resources</h3>
+                            <p>Get access to exclusive resources, tools, and content to accelerate your streaming journey</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="potential-btn">
+                    Join Our Community
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+            </div>
+        </section>
     </main>
 
     <footer>
