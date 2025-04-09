@@ -14,14 +14,14 @@
 
         /* Header Styles */
         header {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            background: #243340;
             padding: 1.2rem 2rem;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(242, 242, 242, 0.1);
         }
 
         .header-content {
@@ -63,12 +63,12 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: #06b6d4;
+            background-color: #D92525;
             transition: width 0.3s ease;
         }
 
         .nav-menu a:hover {
-            color: #06b6d4;
+            color: #D92525;
         }
 
         .nav-menu a:hover::after {
@@ -76,8 +76,8 @@
         }
 
         .download-btn {
-            background-color: #06b6d4;
-            color: #1e293b;
+            background-color: #D92525;
+            color: #F2F2F2;
             padding: 0.7rem 1.5rem;
             border-radius: 5px;
             text-decoration: none;
@@ -88,7 +88,7 @@
         }
 
         .download-btn:hover {
-            background-color: #0891b2;
+            background-color: #A64444;
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
         }
@@ -101,7 +101,7 @@
 
         /* Hero Section */
         .hero-section {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            background: #243340;
             padding: 8rem 2rem 4rem;
             text-align: center;
             position: relative;
@@ -115,7 +115,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, rgba(6, 182, 212, 0.2) 0%, transparent 100%);
+            background: linear-gradient(45deg, rgba(242, 80, 80, 0.2) 0%, transparent 100%);
             z-index: 1;
         }
 
@@ -134,7 +134,7 @@
         }
 
         .hero-content h1 span {
-            color: #06b6d4;
+            color: #D92525;
         }
 
         .hero-content p {
@@ -147,8 +147,8 @@
         /* Tools Grid Section */
         .tools-grid-section {
             padding: 5rem 2rem;
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            color: white;
+            background: #243340;
+            color: #F2F2F2;
         }
 
         .tools-grid-content {
@@ -160,7 +160,7 @@
             font-size: 3rem;
             margin-bottom: 1rem;
             text-align: center;
-            color: #06b6d4;
+            color: #D92525;
         }
 
         .tools-grid-section p {
@@ -179,18 +179,18 @@
         }
 
         .tool-item {
-            background: linear-gradient(135deg, #2d3748 0%, #1e293b 100%);
+            background: rgba(242, 242, 242, 0.1);
             border-radius: 10px;
             overflow: hidden;
             transition: all 0.3s ease;
-            border: 1px solid rgba(6, 182, 212, 0.2);
+            border: 1px solid rgba(242, 80, 80, 0.2);
             display: flex;
             flex-direction: column;
         }
 
         .tool-item:hover {
             transform: translateY(-10px);
-            border-color: #06b6d4;
+            border-color: #D92525;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
 
@@ -236,8 +236,8 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background-color: #06b6d4;
-            color: #1e293b;
+            background-color: #D92525;
+            color: #F2F2F2;
             padding: 0.7rem 1.2rem;
             border-radius: 5px;
             text-decoration: none;
@@ -249,7 +249,7 @@
         }
 
         .tool-link:hover {
-            background-color: #0891b2;
+            background-color: #A64444;
             transform: translateX(5px);
         }
 
@@ -266,8 +266,8 @@
         /* Categories Section */
         .categories-section {
             padding: 5rem 2rem;
-            background: #000000;
-            color: white;
+            background: #243340;
+            color: #F2F2F2;
             position: relative;
             overflow: hidden;
         }
@@ -279,7 +279,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, rgba(6, 182, 212, 0.1) 0%, transparent 100%);
+            background: linear-gradient(45deg, rgba(242, 80, 80, 0.1) 0%, transparent 100%);
             z-index: 1;
         }
 
@@ -294,7 +294,7 @@
         .categories-section h2 {
             font-size: 3rem;
             margin-bottom: 1rem;
-            color: #06b6d4;
+            color: #D92525;
         }
 
         .categories-section p {
@@ -312,30 +312,33 @@
         }
 
         .category-item {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(242, 242, 242, 0.1);
             padding: 2rem;
             border-radius: 10px;
             transition: all 0.3s ease;
             backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(242, 80, 80, 0.2);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
+            text-decoration: none;
+            color: inherit;
         }
 
         .category-item:hover {
             transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
-            border-color: #06b6d4;
+            background: rgba(242, 242, 242, 0.15);
+            border-color: #D92525;
+            cursor: pointer;
         }
 
         .category-icon {
             width: 60px;
             height: 60px;
-            background: #06b6d4;
-            color: #1e293b;
+            background: #D92525;
+            color: #F2F2F2;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -349,7 +352,7 @@
         }
 
         .category-item h3 {
-            color: #06b6d4;
+            color: #D92525;
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
         }
@@ -364,8 +367,8 @@
         /* CTA Section */
         .cta-section {
             padding: 5rem 2rem;
-            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
-            color: white;
+            background: #243340;
+            color: #F2F2F2;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -378,7 +381,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, rgba(6, 182, 212, 0.2) 0%, transparent 100%);
+            background: linear-gradient(45deg, rgba(242, 80, 80, 0.2) 0%, transparent 100%);
             z-index: 1;
         }
 
@@ -396,7 +399,7 @@
         }
 
         .cta-section h2 span {
-            color: #06b6d4;
+            color: #D92525;
         }
 
         .cta-section p {
@@ -410,8 +413,8 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background-color: #06b6d4;
-            color: #1e293b;
+            background-color: #D92525;
+            color: #F2F2F2;
             padding: 1rem 2rem;
             border-radius: 5px;
             text-decoration: none;
@@ -422,7 +425,7 @@
 
         .cta-btn:hover {
             transform: translateY(-3px);
-            background-color: #0891b2;
+            background-color: #A64444;
         }
 
         .cta-btn svg {
@@ -437,8 +440,8 @@
 
         /* Footer Styles */
         footer {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            color: white;
+            background: #243340;
+            color: #F2F2F2;
             padding: 2rem;
             margin-top: auto;
         }
@@ -453,7 +456,7 @@
 
         .footer-section h3 {
             margin-bottom: 1rem;
-            color: #06b6d4;
+            color: #D92525;
         }
 
         .footer-section ul {
@@ -470,7 +473,7 @@
         }
 
         .footer-section ul li a:hover {
-            color: #06b6d4;
+            color: #D92525;
         }
 
         .social-links {
@@ -485,14 +488,14 @@
         }
 
         .social-links a:hover {
-            color: #06b6d4;
+            color: #D92525;
         }
 
         .footer-bottom {
             text-align: center;
             margin-top: 2rem;
             padding-top: 1rem;
-            border-top: 1px solid rgba(6, 182, 212, 0.2);
+            border-top: 1px solid rgba(242, 80, 80, 0.2);
         }
     </style>
 </head>
@@ -519,7 +522,7 @@
 
         <section class="tools-grid-section">
             <div class="tools-grid-content">
-                <h2>Popular Streaming Tools</h2>
+                <h2>Broadcasting Software</h2>
                 <p>These are the most widely used tools by successful streamers to create professional content</p>
                 <div class="tools-grid">
                     <div class="tool-item">
@@ -544,7 +547,7 @@
                         <div class="tool-info">
                             <h3>Streamlabs</h3>
                             <p>All-in-one streaming software with built-in alerts, overlays, and chat integration. Great for Twitch streamers.</p>
-                            <a href="https://streamlabs.com/" class="tool-link" target="_blank">
+                            <a href="https://streamlabs.com/?srsltid=AfmBOoo4otq5BVP4z84eG3JkJg6J6a4ZeOrXgZUvZ24KTi38S8_9rQ5y" class="tool-link" target="_blank">
                                 Learn More
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -557,8 +560,8 @@
                             <img src="https://www.voicemod.net/wp-content/uploads/2020/05/voicemod-logo.png" alt="Voicemod">
                         </div>
                         <div class="tool-info">
-                            <h3>Voicemod</h3>
-                            <p>Real-time voice changer and soundboard software. Add personality to your streams with voice effects and sound clips.</p>
+                            <h3>xsplit</h3>
+                            <p>xSplit is a powerful streaming software that allows you to create and manage multiple streams simultaneously. It offers a wide range of features, including scene transitions, audio mixing, and chat integration.</p>
                             <a href="https://www.voicemod.net/" class="tool-link" target="_blank">
                                 Learn More
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -572,9 +575,9 @@
                             <img src="https://www.elgato.com/sites/default/files/2019-01/Stream_Deck_MK.2_Product_Shot_1.png" alt="Elgato Stream Deck">
                         </div>
                         <div class="tool-info">
-                            <h3>Elgato Stream Deck</h3>
-                            <p>Customizable control center for your stream. Launch scenes, switch cameras, play sound effects, and more with a single tap.</p>
-                            <a href="https://www.elgato.com/en/gaming/stream-deck" class="tool-link" target="_blank">
+                            <h3>Lightstream Studio</h3>
+                            <p>Lightstream Studio is a powerful streaming software that allows you to create and manage multiple streams simultaneously. It offers a wide range of features, including scene transitions, audio mixing, and chat integration.</p>
+                            <a href="https://golightstream.com/twitch/" class="tool-link" target="_blank">
                                 Learn More
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -587,9 +590,9 @@
                             <img src="https://www.nightdev.com/assets/img/streamlabs-logo.png" alt="Streamlabs OBS">
                         </div>
                         <div class="tool-info">
-                            <h3>Streamlabs OBS</h3>
-                            <p>Enhanced version of OBS with additional features like themes, alerts, and integrations. Perfect for streamers who want more customization.</p>
-                            <a href="https://streamlabs.com/obs" class="tool-link" target="_blank">
+                            <h3>Talk Studio</h3>
+                            <p>Talk Studio is a powerful streaming software that allows you to create and manage multiple streams simultaneously. It offers a wide range of features, including scene transitions, audio mixing, and chat integration.</p>
+                            <a href="https://streamlabs.com/talk-studio" class="tool-link" target="_blank">
                                 Learn More
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -602,9 +605,9 @@
                             <img src="https://www.logitechg.com/content/dam/gaming/en/products/pro-x-microphone/pro-x-microphone-gallery-1.png" alt="Logitech G Pro X Microphone">
                         </div>
                         <div class="tool-info">
-                            <h3>Logitech G Pro X Microphone</h3>
-                            <p>Professional-grade microphone with Blue Voice technology for crystal clear audio. Essential for streamers who want to sound their best.</p>
-                            <a href="https://www.logitechg.com/en-us/products/gaming-audio/pro-x-microphone.html" class="tool-link" target="_blank">
+                            <h3>PRISM Live Studio Desktop</h3>
+                            <p>Live Studio Desktop is a powerful streaming software that allows you to create and manage multiple streams simultaneously. It offers a wide range of features, including scene transitions, audio mixing, and chat integration.</p>
+                            <a href="https://prismlive.com/en_us/desktop.html" class="tool-link" target="_blank">
                                 Learn More
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -619,27 +622,27 @@
         <section class="categories-section">
             <div class="categories-content">
                 <h2>Tool <span>Categories</span></h2>
-                <p>Find the right tools for your specific streaming needs</p>
+                <p>Find the right tools for streaming needs</p>
                 <div class="categories-grid">
-                    <div class="category-item">
+                    <a href="streaming-software.html" class="category-item">
                         <div class="category-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                             </svg>
                         </div>
-                        <h3>Streaming Software</h3>
+                        <h3>Community Tools</h3>
                         <p>Tools for capturing, encoding, and broadcasting your content</p>
-                    </div>
-                    <div class="category-item">
+                    </a>
+                    <a href="peripherals.html" class="category-item">
                         <div class="category-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                             </svg>
                         </div>
-                        <h3>Audio Equipment</h3>
+                        <h3>Peripherals</h3>
                         <p>Microphones, mixers, and audio processing tools</p>
-                    </div>
-                    <div class="category-item">
+                    </a>
+                    <a href="visual-assets.html" class="category-item">
                         <div class="category-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -647,16 +650,89 @@
                         </div>
                         <h3>Visual Assets</h3>
                         <p>Overlays, alerts, and graphics to enhance your stream</p>
-                    </div>
-                    <div class="category-item">
+                    </a>
+                    <a href="community-tools.html" class="category-item">
                         <div class="category-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                             </svg>
                         </div>
-                        <h3>Community Tools</h3>
-                        <p>Software to engage with your audience and build community</p>
-                    </div>
+                        <h3>Engagement Tools</h3>
+                        <p>Software to engage with your audience and build</p>
+                    </a>
+                    <a href="lighting-equipment.html" class="category-item">
+                        <div class="category-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                            </svg>
+                        </div>
+                        <h3>Lighting Equipment</h3>
+                        <p>Professional lighting solutions for perfect stream quality</p>
+                    </a>
+                    <a href="camera-gear.html" class="category-item">
+                        <div class="category-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </div>
+                        <h3>Camera Gear</h3>
+                        <p>High-quality cameras and accessories for professional streams</p>
+                    </a>
+                    <a href="streaming-pc.html" class="category-item">
+                        <div class="category-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <h3>Streaming PC</h3>
+                        <p>Hardware recommendations for optimal streaming performance</p>
+                    </a>
+                    <!-- <a href="streaming-accessories.html" class="category-item">
+                        <div class="category-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                            </svg>
+                        </div>
+                        <h3>Streaming Accessories</h3>
+                        <p>Essential accessories to complete your streaming setup</p>
+                    </a> -->
+                    <a href="streaming-consoles.html" class="category-item">
+                        <div class="category-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                        </div>
+                        <h3>Streaming Consoles</h3>
+                        <p>Capture cards and equipment for console streaming</p>
+                    </a>
+                    <!-- <a href="streaming-furniture.html" class="category-item">
+                        <div class="category-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+                        </div>
+                        <h3>Streaming Furniture</h3>
+                        <p>Ergonomic furniture and setup solutions for streamers</p>
+                    </a>
+                    <a href="streaming-backgrounds.html" class="category-item">
+                        <div class="category-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <h3>Streaming Backgrounds</h3>
+                        <p>Green screens, backdrops, and virtual backgrounds</p>
+                    </a>
+                    <a href="streaming-software.html" class="category-item">
+                        <div class="category-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                            </svg>
+                        </div>
+                        <h3>Streaming Software</h3>
+                        <p>Advanced software tools for professional streaming</p>
+                    </a> -->
                 </div>
             </div>
         </section>

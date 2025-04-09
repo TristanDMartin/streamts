@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streaming PC - Streamer Tips</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header Styles */
+        header {
+            background: #243340;
+            padding: 1.2rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(242, 242, 242, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #D92525;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #D92525;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .download-btn {
+            background-color: #D92525;
+            color: #F2F2F2;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .download-btn:hover {
+            background-color: #A64444;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 0;
+            min-height: calc(100vh - 80px - 200px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: #243340;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(242, 80, 80, 0.2) 0%, transparent 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            color: white;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content h1 span {
+            color: #D92525;
+        }
+
+        .hero-content p {
+            color: #ffffff;
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        /* PC Setup Section */
+        .pc-section {
+            padding: 5rem 2rem;
+            background: #243340;
+            color: #F2F2F2;
+        }
+
+        .pc-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .setup-card {
+            background: rgba(242, 242, 242, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(242, 80, 80, 0.2);
+        }
+
+        .setup-card h2 {
+            color: #D92525;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .setup-card h3 {
+            color: #D92525;
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .setup-card p {
+            color: #cccccc;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .requirement-item {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 5px;
+        }
+
+        .requirement-item h4 {
+            color: #D92525;
+            margin-bottom: 1rem;
+        }
+
+        .requirement-item ul {
+            list-style: none;
+            color: #cccccc;
+        }
+
+        .requirement-item li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .requirement-item li::before {
+            content: '•';
+            color: #D92525;
+        }
+
+        .setup-steps {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
+        .setup-steps ol {
+            padding-left: 1.5rem;
+            color: #cccccc;
+        }
+
+        .setup-steps li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .note {
+            background: rgba(242, 80, 80, 0.1);
+            border-left: 4px solid #D92525;
+            padding: 1rem;
+            margin: 1rem 0;
+            color: #cccccc;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #243340;
+            color: #F2F2F2;
+            padding: 2rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #D92525;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-section ul li a:hover {
+            color: #D92525;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(242, 80, 80, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">Streamer Tips</a>
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="creator-tools.html">Creator Tools</a>
+            </nav>
+            <a href="#" class="download-btn">Monthly Streamers</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Streaming <span>PC Setup</span></h1>
+                <p>Everything you need to know about PC streaming setup</p>
+            </div>
+        </section>
+
+        <section class="pc-section">
+            <div class="pc-content">
+                <!-- Hardware Requirements -->
+                <div class="setup-card">
+                    <h2>Hardware Requirements</h2>
+                    <p>To stream effectively, you'll need a PC with sufficient processing power and the right peripherals. Here's what you need:</p>
+                    
+                    <div class="requirements-grid">
+                        <div class="requirement-item">
+                            <h4>Minimum Requirements</h4>
+                            <ul>
+                                <li>Intel Core i5 or AMD Ryzen 5</li>
+                                <li>8GB RAM</li>
+                                <li>NVIDIA GTX 1060 or AMD RX 580</li>
+                                <li>1080p Webcam</li>
+                                <li>Basic USB Microphone</li>
+                                <li>5Mbps Upload Speed</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="requirement-item">
+                            <h4>Recommended Setup</h4>
+                            <ul>
+                                <li>Intel Core i7 or AMD Ryzen 7</li>
+                                <li>16GB RAM</li>
+                                <li>NVIDIA RTX 2060 or AMD RX 5700</li>
+                                <li>1080p60 Webcam</li>
+                                <li>XLR Microphone with Audio Interface</li>
+                                <li>10Mbps Upload Speed</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="requirement-item">
+                            <h4>Premium Setup</h4>
+                            <ul>
+                                <li>Intel Core i9 or AMD Ryzen 9</li>
+                                <li>32GB RAM</li>
+                                <li>NVIDIA RTX 3080 or AMD RX 6800 XT</li>
+                                <li>4K Webcam</li>
+                                <li>Professional XLR Setup</li>
+                                <li>20Mbps Upload Speed</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Software Setup -->
+                <div class="setup-card">
+                    <h2>Software Setup</h2>
+                    <p>Choose the right streaming software and configure it properly for optimal performance.</p>
+                    
+                    <div class="setup-steps">
+                        <h3>OBS Studio Setup</h3>
+                        <ol>
+                            <li>Download and install OBS Studio from obsproject.com</li>
+                            <li>Run the Auto-Configuration Wizard (Tools > Auto-Configuration Wizard)</li>
+                            <li>Set up your streaming platform (Twitch/YouTube)</li>
+                            <li>Configure your stream key</li>
+                            <li>Add your sources (Game Capture, Webcam, etc.)</li>
+                            <li>Set up your scenes and transitions</li>
+                            <li>Configure audio devices</li>
+                            <li>Test your stream settings</li>
+                        </ol>
+                    </div>
+
+                    <div class="setup-steps">
+                        <h3>Streamlabs OBS Setup</h3>
+                        <ol>
+                            <li>Download and install Streamlabs OBS from streamlabs.com</li>
+                            <li>Log in with your streaming platform account</li>
+                            <li>Import your existing OBS settings (optional)</li>
+                            <li>Set up your stream alerts and overlays</li>
+                            <li>Configure your stream settings</li>
+                            <li>Add your sources and scenes</li>
+                            <li>Test your stream</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Streaming Configuration -->
+                <div class="setup-card">
+                    <h2>Streaming Configuration</h2>
+                    <p>Optimize your stream settings for the best quality and performance.</p>
+                    
+                    <div class="setup-steps">
+                        <h3>Video Settings</h3>
+                        <ol>
+                            <li>Set your base (canvas) resolution to your monitor's native resolution</li>
+                            <li>Set output (scaled) resolution to 1920x1080 for 1080p streaming</li>
+                            <li>Set FPS to 60 for smooth gameplay</li>
+                            <li>Configure your bitrate (6000-8000 Kbps for 1080p60)</li>
+                            <li>Enable hardware encoding (NVENC or AMD VCE)</li>
+                        </ol>
+                    </div>
+
+                    <div class="setup-steps">
+                        <h3>Audio Settings</h3>
+                        <ol>
+                            <li>Set up your microphone input</li>
+                            <li>Configure desktop audio capture</li>
+                            <li>Set up audio filters (noise suppression, compression)</li>
+                            <li>Balance your audio levels</li>
+                            <li>Test your audio setup</li>
+                        </ol>
+                    </div>
+
+                    <div class="note">
+                        <p><strong>Note:</strong> For optimal performance, use a dedicated streaming PC or a powerful single PC setup. Consider using NVENC (NVIDIA) or AMD VCE for encoding to reduce CPU load.</p>
+                    </div>
+                </div>
+
+                <!-- Additional Tips -->
+                <div class="setup-card">
+                    <h2>Additional Tips</h2>
+                    <div class="setup-steps">
+                        <h3>Best Practices</h3>
+                        <ol>
+                            <li>Use a wired internet connection for stability</li>
+                            <li>Close unnecessary background applications</li>
+                            <li>Monitor your CPU and GPU usage</li>
+                            <li>Keep your streaming software updated</li>
+                            <li>Use stream overlays and alerts</li>
+                            <li>Engage with your chat</li>
+                            <li>Test your setup before going live</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Product</h3>
+                <ul>
+                    <li><a href="#">Voice Changer</a></li>
+                    <li><a href="#">Soundboard</a></li>
+                    <li><a href="#">Voicemod Key</a></li>
+                    <li><a href="#">Voicelab</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Community</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <ul>
+                    <li><a href="#">Discord</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 StreamerTips All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 

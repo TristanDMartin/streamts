@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streaming Consoles - Streamer Tips</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header Styles */
+        header {
+            background: #243340;
+            padding: 1.2rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(242, 242, 242, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #D92525;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #D92525;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .download-btn {
+            background-color: #D92525;
+            color: #F2F2F2;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .download-btn:hover {
+            background-color: #A64444;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 0;
+            min-height: calc(100vh - 80px - 200px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: #243340;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(242, 80, 80, 0.2) 0%, transparent 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            color: white;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content h1 span {
+            color: #D92525;
+        }
+
+        .hero-content p {
+            color: #ffffff;
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        /* Consoles Section */
+        .consoles-section {
+            padding: 5rem 2rem;
+            background: #243340;
+            color: #F2F2F2;
+        }
+
+        .consoles-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .console {
+            background: rgba(242, 242, 242, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(242, 80, 80, 0.2);
+        }
+
+        .console h2 {
+            color: #D92525;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .console-info {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .console-image {
+            width: 100%;
+            height: 300px;
+            background: #1a1a1a;
+            border-radius: 5px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .console-image img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .console-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .console-details p {
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        .setup-steps {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
+        .setup-steps h3 {
+            color: #D92525;
+            margin-bottom: 1rem;
+        }
+
+        .setup-steps ol {
+            padding-left: 1.5rem;
+            color: #cccccc;
+        }
+
+        .setup-steps li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .requirements {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        .requirements h3 {
+            color: #D92525;
+            margin-bottom: 0.5rem;
+        }
+
+        .requirements ul {
+            list-style: none;
+            color: #cccccc;
+        }
+
+        .requirements li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .requirements li::before {
+            content: '•';
+            color: #D92525;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #243340;
+            color: #F2F2F2;
+            padding: 2rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #D92525;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-section ul li a:hover {
+            color: #D92525;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(242, 80, 80, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">Streamer Tips</a>
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="creator-tools.html">Creator Tools</a>
+            </nav>
+            <a href="#" class="download-btn">Monthly Streamers</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Streaming <span>Consoles</span></h1>
+                <p>Learn how to stream from your favorite gaming consoles</p>
+            </div>
+        </section>
+
+        <section class="consoles-section">
+            <div class="consoles-content">
+                <!-- PlayStation 5 -->
+                <div class="console">
+                    <h2>PlayStation 5</h2>
+                    <div class="console-info">
+                        <div class="console-image">
+                            <img src="https://m.media-amazon.com/images/I/71YH+QJ0HmL._AC_SL1500_.jpg" alt="PlayStation 5">
+                        </div>
+                        <div class="console-details">
+                            <p>The PlayStation 5 offers built-in streaming capabilities to Twitch and YouTube. With its powerful hardware, you can stream in up to 1080p resolution at 60fps.</p>
+                            <div class="setup-steps">
+                                <h3>Setup Guide</h3>
+                                <ol>
+                                    <li>Press the Create button on your DualSense controller</li>
+                                    <li>Select "Broadcast" from the menu</li>
+                                    <li>Choose your streaming platform (Twitch or YouTube)</li>
+                                    <li>Link your account by scanning the QR code or entering the code</li>
+                                    <li>Customize your stream settings (resolution, bitrate, etc.)</li>
+                                    <li>Start your broadcast</li>
+                                </ol>
+                            </div>
+                            <div class="requirements">
+                                <h3>Requirements</h3>
+                                <ul>
+                                    <li>PlayStation Network account</li>
+                                    <li>Twitch or YouTube account</li>
+                                    <li>Stable internet connection (minimum 5Mbps upload)</li>
+                                    <li>HDMI cable for capture card setup (optional)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Xbox Series X/S -->
+                <div class="console">
+                    <h2>Xbox Series X/S</h2>
+                    <div class="console-info">
+                        <div class="console-image">
+                            <img src="https://m.media-amazon.com/images/I/71YH+QJ0HmL._AC_SL1500_.jpg" alt="Xbox Series X">
+                        </div>
+                        <div class="console-details">
+                            <p>The Xbox Series X/S provides native streaming to Twitch and YouTube, supporting up to 1080p at 60fps. The console also features a built-in mixer for audio control.</p>
+                            <div class="setup-steps">
+                                <h3>Setup Guide</h3>
+                                <ol>
+                                    <li>Press the Xbox button on your controller</li>
+                                    <li>Navigate to "Capture & Share"</li>
+                                    <li>Select "Live Streaming"</li>
+                                    <li>Choose your streaming platform</li>
+                                    <li>Sign in to your streaming account</li>
+                                    <li>Adjust your stream settings</li>
+                                    <li>Start your broadcast</li>
+                                </ol>
+                            </div>
+                            <div class="requirements">
+                                <h3>Requirements</h3>
+                                <ul>
+                                    <li>Xbox Live account</li>
+                                    <li>Twitch or YouTube account</li>
+                                    <li>Stable internet connection (minimum 5Mbps upload)</li>
+                                    <li>HDMI cable for capture card setup (optional)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nintendo Switch -->
+                <div class="console">
+                    <h2>Nintendo Switch</h2>
+                    <div class="console-info">
+                        <div class="console-image">
+                            <img src="https://m.media-amazon.com/images/I/71YH+QJ0HmL._AC_SL1500_.jpg" alt="Nintendo Switch">
+                        </div>
+                        <div class="console-details">
+                            <p>The Nintendo Switch requires a capture card for streaming, as it doesn't have built-in streaming capabilities. This allows for higher quality streams and more customization.</p>
+                            <div class="setup-steps">
+                                <h3>Setup Guide</h3>
+                                <ol>
+                                    <li>Connect your Switch to a capture card using HDMI</li>
+                                    <li>Connect the capture card to your PC</li>
+                                    <li>Install the capture card software on your PC</li>
+                                    <li>Set up your streaming software (OBS, Streamlabs, etc.)</li>
+                                    <li>Configure your stream settings</li>
+                                    <li>Start your broadcast</li>
+                                </ol>
+                            </div>
+                            <div class="requirements">
+                                <h3>Requirements</h3>
+                                <ul>
+                                    <li>Capture card (Elgato HD60 S+, AverMedia Live Gamer, etc.)</li>
+                                    <li>HDMI cable</li>
+                                    <li>PC with streaming software</li>
+                                    <li>Stable internet connection</li>
+                                    <li>Nintendo Switch dock</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Tips -->
+                <div class="console">
+                    <h2>Streaming Tips</h2>
+                    <div class="console-details">
+                        <div class="setup-steps">
+                            <h3>Best Practices</h3>
+                            <ol>
+                                <li>Use a wired internet connection for better stability</li>
+                                <li>Test your stream settings before going live</li>
+                                <li>Consider using a capture card for higher quality streams</li>
+                                <li>Use a webcam for face cam (optional)</li>
+                                <li>Set up stream overlays and alerts</li>
+                                <li>Engage with your chat using a second screen</li>
+                            </ol>
+                        </div>
+                        <div class="requirements">
+                            <h3>Recommended Accessories</h3>
+                            <ul>
+                                <li>Capture card (for higher quality streams)</li>
+                                <li>Webcam (for face cam)</li>
+                                <li>Microphone (for better audio quality)</li>
+                                <li>Second monitor (for chat interaction)</li>
+                                <li>Stream deck (for scene switching)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Product</h3>
+                <ul>
+                    <li><a href="#">Voice Changer</a></li>
+                    <li><a href="#">Soundboard</a></li>
+                    <li><a href="#">Voicemod Key</a></li>
+                    <li><a href="#">Voicelab</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Community</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <ul>
+                    <li><a href="#">Discord</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 StreamerTips All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streaming Peripherals - Streamer Tips</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header Styles */
+        header {
+            background: #243340;
+            padding: 1.2rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(242, 242, 242, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #D92525;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #D92525;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .download-btn {
+            background-color: #D92525;
+            color: #F2F2F2;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .download-btn:hover {
+            background-color: #A64444;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 0;
+            min-height: calc(100vh - 80px - 200px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: #243340;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(242, 80, 80, 0.2) 0%, transparent 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            color: white;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content h1 span {
+            color: #D92525;
+        }
+
+        .hero-content p {
+            color: #ffffff;
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        /* Categories Section */
+        .categories-section {
+            padding: 5rem 2rem;
+            background: #243340;
+            color: #F2F2F2;
+        }
+
+        .categories-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category {
+            margin-bottom: 4rem;
+        }
+
+        .category h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #D92525;
+            text-align: center;
+        }
+
+        .category p {
+            font-size: 1.2rem;
+            color: #cccccc;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .peripherals-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .peripheral-item {
+            background: rgba(242, 242, 242, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(242, 80, 80, 0.2);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .peripheral-item:hover {
+            transform: translateY(-10px);
+            border-color: #D92525;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .peripheral-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .peripheral-image img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+
+        .peripheral-item:hover .peripheral-image img {
+            transform: scale(1.1);
+        }
+
+        .peripheral-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .peripheral-info h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .peripheral-info p {
+            color: #cccccc;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .peripheral-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: #D92525;
+            color: #F2F2F2;
+            padding: 0.7rem 1.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin-top: auto;
+            align-self: flex-start;
+        }
+
+        .peripheral-link:hover {
+            background-color: #A64444;
+            transform: translateX(5px);
+        }
+
+        .peripheral-link svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .peripheral-link:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #243340;
+            color: #F2F2F2;
+            padding: 2rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #D92525;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-section ul li a:hover {
+            color: #D92525;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(242, 80, 80, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">Streamer Tips</a>
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="creator-tools.html">Creator Tools</a>
+            </nav>
+            <a href="#" class="download-btn">Monthly Streamers</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Streaming <span>Peripherals</span></h1>
+                <p>Essential gear to enhance your streaming setup and professional quality</p>
+            </div>
+        </section>
+
+        <section class="categories-section">
+            <div class="categories-content">
+                <!-- Microphones Category -->
+                <div class="category">
+                    <h2>Microphones</h2>
+                    <p>Professional audio quality starts with the right microphone</p>
+                    <div class="peripherals-grid">
+                        <div class="peripheral-item">
+                            <div class="peripheral-image">
+                                <img src="https://resource.logitechg.com/w_692,c_lpad,ar_4:3,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/gaming/en/products/pro-x/pro-x-gaming-microphone/gallery/pro-x-gaming-microphone-gallery-1.png?v=1" alt="Logitech G Pro X">
+                            </div>
+                            <div class="peripheral-info">
+                                <h3>Logitech G Pro X</h3>
+                                <p>Professional-grade USB microphone with Blue VO!CE technology for crystal-clear voice quality.</p>
+                                <a href="https://www.logitechg.com/en-us/products/microphones/pro-x-gaming-microphone.988-000001.html" class="peripheral-link" target="_blank">
+                                    View Product
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="peripheral-item">
+                            <div class="peripheral-image">
+                                <img src="https://www.shure.com/damfiles/default/default-product-images/mv7/mv7-black-front.png" alt="Shure MV7">
+                            </div>
+                            <div class="peripheral-info">
+                                <h3>Shure MV7</h3>
+                                <p>Hybrid USB/XLR microphone with professional sound quality and built-in headphone output.</p>
+                                <a href="https://www.shure.com/en-US/products/microphones/mv7" class="peripheral-link" target="_blank">
+                                    View Product
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="peripheral-item">
+                            <div class="peripheral-image">
+                                <img src="https://www.elgato.com/sites/default/files/2019-10/wave-3-mic-1.png" alt="Elgato Wave 3">
+                            </div>
+                            <div class="peripheral-info">
+                                <h3>Elgato Wave 3</h3>
+                                <p>USB microphone with built-in audio mixer and Wave Link software for professional streaming.</p>
+                                <a href="https://www.elgato.com/en/wave-3" class="peripheral-link" target="_blank">
+                                    View Product
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Audio Processing Category -->
+                <div class="category">
+                    <h2>Audio Processing</h2>
+                    <p>Tools to enhance and control your audio quality</p>
+                    <div class="peripherals-grid">
+                        <div class="peripheral-item">
+                            <div class="peripheral-image">
+                                <img src="https://www.goxtr.com/wp-content/uploads/2021/01/GOXLR-Mini-1.png" alt="TC Helicon GoXLR">
+                            </div>
+                            <div class="peripheral-info">
+                                <h3>TC Helicon GoXLR</h3>
+                                <p>Professional audio mixer with voice effects and sound control for streamers.</p>
+                                <a href="https://www.tc-helicon.com/goxlr.html" class="peripheral-link" target="_blank">
+                                    View Product
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="peripheral-item">
+                            <div class="peripheral-image">
+                                <img src="https://www.elgato.com/sites/default/files/2020-10/wave-xlr-1.png" alt="Elgato Wave XLR">
+                            </div>
+                            <div class="peripheral-info">
+                                <h3>Elgato Wave XLR</h3>
+                                <p>Professional XLR audio interface with Wave Link software integration.</p>
+                                <a href="https://www.elgato.com/en/wave-xlr" class="peripheral-link" target="_blank">
+                                    View Product
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="peripheral-item">
+                            <div class="peripheral-image">
+                                <img src="https://www.focusrite.com/media/1/thumbnail/2i2-3rd-gen-1_1.png" alt="Focusrite Scarlett 2i2">
+                            </div>
+                            <div class="peripheral-info">
+                                <h3>Focusrite Scarlett 2i2</h3>
+                                <p>Professional audio interface for high-quality XLR microphone recording.</p>
+                                <a href="https://focusrite.com/en/usb-audio-interface/scarlett/scarlett-2i2" class="peripheral-link" target="_blank">
+                                    View Product
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monitors Category -->
+                <div class="category">
+                    <h2>Monitors</h2>
+                    <p>High-quality displays for optimal streaming and gaming experience</p>
+                    <div class="peripherals-grid">
+                        <div class="peripheral-item">
+                            <div class="peripheral-image">
+                                <img src="https://www.asus.com/media/global/products/0q5h7q3q3q3q3q3q/0q5h7q3q3q3q3q3q_1.png" alt="ASUS ROG Swift">
+                            </div>
+                            <div class="peripheral-info">
+                                <h3>ASUS ROG Swift</h3>
+                                <p>High-refresh-rate gaming monitor with G-Sync technology for smooth gameplay.</p>
+                                <a href="https://www.asus.com/us/Monitors/ROG-Swift-PG279Q/" class="peripheral-link" target="_blank">
+                                    View Product
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="peripheral-item">
+                            <div class="peripheral-image">
+                                <img src="https://www.lg.com/us/images/monitors/md07500001/gallery/medium01.jpg" alt="LG UltraGear">
+                            </div>
+                            <div class="peripheral-info">
+                                <h3>LG UltraGear</h3>
+                                <p>Ultra-wide gaming monitor with HDR support and high refresh rate.</p>
+                                <a href="https://www.lg.com/us/monitors/lg-34gn850-b-ultrawide-monitor" class="peripheral-link" target="_blank">
+                                    View Product
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="peripheral-item">
+                            <div class="peripheral-image">
+                                <img src="https://www.benq.com/content/dam/b2c/en/monitors/gaming-monitors/ex2710q/ex2710q-1.png" alt="BenQ EX2710Q">
+                            </div>
+                            <div class="peripheral-info">
+                                <h3>BenQ EX2710Q</h3>
+                                <p>1440p gaming monitor with HDRi technology and built-in speakers.</p>
+                                <a href="https://www.benq.com/en-us/monitor/gaming/ex2710q.html" class="peripheral-link" target="_blank">
+                                    View Product
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gaming Mice Category -->
+                <div class="category">
+                    <h2>Gaming Mice</h2>
+                    <p>Precision and comfort for optimal gaming performance</p>
+                    <div class="peripherals-grid">
+                        <div class="peripheral-item">
+                            <div class="peripheral-image">
+                                <img src="https://www.logitechg.com/content/dam/gaming/en/products/g502-hero/g502-hero-gallery-1.png" alt="Logitech G502 Hero">
+                            </div>
+                            <div class="peripheral-info">
+                                <h3>Logitech G502 Hero</h3>
+                                <p>High-precision gaming mouse with customizable weights and programmable buttons.</p>
+                                <a href="https://www.logitechg.com/en-us/products/gaming-mice/g502-hero-gaming-mouse.910-005439.html" class="peripheral-link" target="_blank">
+                                    View Product
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="peripheral-item">
+                            <div class="peripheral-image">
+                                <img src="https://www.razer.com/assets/images/products/razer-basilisk-v3/razer-basilisk-v3-1.png" alt="Razer Basilisk V3">
+                            </div>
+                            <div class="peripheral-info">
+                                <h3>Razer Basilisk V3</h3>
+                                <p>Ergonomic gaming mouse with customizable scroll wheel and RGB lighting.</p>
+                                <a href="https://www.razer.com/gaming-mice/razer-basilisk-v3" class="peripheral-link" target="_blank">
+                                    View Product
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="peripheral-item">
+                            <div class="peripheral-image">
+                                <img src="https://www.corsair.com/corsairmedia/sys_master/productcontent/CH-9309011-NA-M65_RGB_ULTRA_WL_01.png" alt="Corsair M65 RGB Ultra">
+                            </div>
+                            <div class="peripheral-info">
+                                <h3>Corsair M65 RGB Ultra</h3>
+                                <p>Aluminum frame gaming mouse with sniper button and customizable weights.</p>
+                                <a href="https://www.corsair.com/us/en/Categories/Products/Gaming-Mice/Wireless-Gaming-Mice/M65-RGB-ULTRA-WIRELESS/p/CH-9309011-NA" class="peripheral-link" target="_blank">
+                                    View Product
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Product</h3>
+                <ul>
+                    <li><a href="#">Voice Changer</a></li>
+                    <li><a href="#">Soundboard</a></li>
+                    <li><a href="#">Voicemod Key</a></li>
+                    <li><a href="#">Voicelab</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Community</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <ul>
+                    <li><a href="#">Discord</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 StreamerTips All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 
