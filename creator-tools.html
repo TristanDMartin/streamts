@@ -4,24 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creator Tools - Streamer Tips</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', sans-serif;
         }
 
         /* Header Styles */
         header {
-            background: #243340;
+            background: linear-gradient(135deg, rgba(21, 23, 35, 0.95), rgba(26, 31, 46, 0.95));
             padding: 1.2rem 2rem;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            border-bottom: 1px solid rgba(242, 242, 242, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(226, 227, 231, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        header:hover {
+            background: linear-gradient(135deg, rgba(21, 23, 35, 0.98), rgba(26, 31, 46, 0.98));
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
         }
 
         .header-content {
@@ -30,15 +40,104 @@
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
+            gap: 2rem;
         }
 
         .logo {
-            color: white;
+            color: #e2e3e7;
             font-size: 1.8rem;
             font-weight: bold;
             text-decoration: none;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             letter-spacing: 0.5px;
+            background: linear-gradient(45deg, #d2843f, #ca7769, #b03b8c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradient 3s ease infinite;
+        }
+
+        .search-container {
+            flex: 1;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.7rem 1.2rem;
+            padding-right: 2.5rem;
+            border-radius: 5px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .search-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 2px rgba(217, 37, 37, 0.3);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.5);
+            pointer-events: none;
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #243340;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .search-results.active {
+            display: block;
+        }
+
+        .search-result-item {
+            padding: 0.8rem 1rem;
+            color: white;
+            text-decoration: none;
+            display: block;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-item:hover {
+            background: rgba(217, 37, 37, 0.1);
+            color: #D92525;
+        }
+
+        .search-result-item h4 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .search-result-item p {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .nav-menu {
@@ -97,11 +196,12 @@
         main {
             margin-top: 0;
             min-height: calc(100vh - 80px - 200px);
+            background: linear-gradient(135deg, #151723, #1a1f2e);
         }
 
         /* Hero Section */
         .hero-section {
-            background: #243340;
+            background: linear-gradient(135deg, rgba(21, 23, 35, 0.95), rgba(26, 31, 46, 0.95));
             padding: 8rem 2rem 4rem;
             text-align: center;
             position: relative;
@@ -127,18 +227,22 @@
         }
 
         .hero-content h1 {
-            color: white;
+            color: #e2e3e7;
             font-size: 4rem;
             margin-bottom: 1.5rem;
             line-height: 1.2;
         }
 
         .hero-content h1 span {
-            color: #D92525;
+            background: linear-gradient(45deg, #d2843f, #ca7769, #b03b8c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradient 3s ease infinite;
         }
 
         .hero-content p {
-            color: #ffffff;
+            color: #e2e3e7;
             font-size: 1.5rem;
             line-height: 1.6;
             margin-bottom: 2rem;
@@ -147,29 +251,24 @@
         /* Tools Grid Section */
         .tools-grid-section {
             padding: 5rem 2rem;
-            background: #243340;
-            color: #F2F2F2;
+            background: linear-gradient(135deg, rgba(21, 23, 35, 0.95), rgba(26, 31, 46, 0.95));
+            color: #e2e3e7;
+        }
+
+        .tools-grid-section h2 {
+            color: #d2843f;
+            background: linear-gradient(45deg, #d2843f, #ca7769);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tools-grid-section p {
+            color: #e2e3e7;
         }
 
         .tools-grid-content {
             max-width: 1200px;
             margin: 0 auto;
-        }
-
-        .tools-grid-section h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-align: center;
-            color: #D92525;
-        }
-
-        .tools-grid-section p {
-            font-size: 1.2rem;
-            color: #cccccc;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            line-height: 1.6;
-            text-align: center;
         }
 
         .tools-grid {
@@ -179,18 +278,18 @@
         }
 
         .tool-item {
-            background: rgba(242, 242, 242, 0.1);
+            background: rgba(226, 227, 231, 0.05);
             border-radius: 10px;
             overflow: hidden;
             transition: all 0.3s ease;
-            border: 1px solid rgba(242, 80, 80, 0.2);
+            border: 1px solid rgba(210, 132, 63, 0.1);
             display: flex;
             flex-direction: column;
         }
 
         .tool-item:hover {
             transform: translateY(-10px);
-            border-color: #D92525;
+            border-color: #d2843f;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
 
@@ -219,13 +318,16 @@
         }
 
         .tool-info h3 {
-            color: white;
+            color: #d2843f;
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #d2843f, #ca7769);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .tool-info p {
-            color: #cccccc;
+            color: #e2e3e7;
             font-size: 1rem;
             line-height: 1.6;
             margin-bottom: 1.5rem;
@@ -236,8 +338,8 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background-color: #D92525;
-            color: #F2F2F2;
+            background: linear-gradient(45deg, #d2843f, #ca7769, #b03b8c);
+            color: #e2e3e7;
             padding: 0.7rem 1.2rem;
             border-radius: 5px;
             text-decoration: none;
@@ -249,7 +351,7 @@
         }
 
         .tool-link:hover {
-            background-color: #A64444;
+            background: linear-gradient(45deg, #ca7769, #b03b8c);
             transform: translateX(5px);
         }
 
@@ -266,8 +368,8 @@
         /* Categories Section */
         .categories-section {
             padding: 5rem 2rem;
-            background: #243340;
-            color: #F2F2F2;
+            background: linear-gradient(135deg, rgba(21, 23, 35, 0.95), rgba(26, 31, 46, 0.95));
+            color: #e2e3e7;
             position: relative;
             overflow: hidden;
         }
@@ -292,14 +394,15 @@
         }
 
         .categories-section h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: #D92525;
+            color: #d2843f;
+            background: linear-gradient(45deg, #d2843f, #ca7769);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .categories-section p {
+            color: #e2e3e7;
             font-size: 1.2rem;
-            color: #cccccc;
             max-width: 800px;
             margin: 0 auto 3rem;
             line-height: 1.6;
@@ -312,12 +415,12 @@
         }
 
         .category-item {
-            background: rgba(242, 242, 242, 0.1);
+            background: rgba(226, 227, 231, 0.05);
             padding: 2rem;
             border-radius: 10px;
             transition: all 0.3s ease;
             backdrop-filter: blur(5px);
-            border: 1px solid rgba(242, 80, 80, 0.2);
+            border: 1px solid rgba(210, 132, 63, 0.1);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -329,16 +432,16 @@
 
         .category-item:hover {
             transform: translateY(-5px);
-            background: rgba(242, 242, 242, 0.15);
-            border-color: #D92525;
+            background: rgba(226, 227, 231, 0.1);
+            border-color: #d2843f;
             cursor: pointer;
         }
 
         .category-icon {
             width: 60px;
             height: 60px;
-            background: #D92525;
-            color: #F2F2F2;
+            background: linear-gradient(45deg, #d2843f, #ca7769, #b03b8c);
+            color: #e2e3e7;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -352,13 +455,16 @@
         }
 
         .category-item h3 {
-            color: #D92525;
+            color: #d2843f;
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #d2843f, #ca7769);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .category-item p {
-            color: #ffffff;
+            color: #e2e3e7;
             font-size: 1rem;
             line-height: 1.6;
             margin-bottom: 0;
@@ -367,8 +473,8 @@
         /* CTA Section */
         .cta-section {
             padding: 5rem 2rem;
-            background: #243340;
-            color: #F2F2F2;
+            background: linear-gradient(135deg, rgba(21, 23, 35, 0.95), rgba(26, 31, 46, 0.95));
+            color: #e2e3e7;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -393,18 +499,21 @@
         }
 
         .cta-section h2 {
+            color: #e2e3e7;
             font-size: 3rem;
             margin-bottom: 1.5rem;
             line-height: 1.2;
         }
 
         .cta-section h2 span {
-            color: #D92525;
+            background: linear-gradient(45deg, #d2843f, #ca7769, #b03b8c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .cta-section p {
+            color: #e2e3e7;
             font-size: 1.3rem;
-            color: #ffffff;
             margin-bottom: 2rem;
             line-height: 1.6;
         }
@@ -413,8 +522,8 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background-color: #D92525;
-            color: #F2F2F2;
+            background: linear-gradient(45deg, #d2843f, #ca7769, #b03b8c);
+            color: #e2e3e7;
             padding: 1rem 2rem;
             border-radius: 5px;
             text-decoration: none;
@@ -425,7 +534,7 @@
 
         .cta-btn:hover {
             transform: translateY(-3px);
-            background-color: #A64444;
+            background: linear-gradient(45deg, #ca7769, #b03b8c);
         }
 
         .cta-btn svg {
@@ -440,8 +549,8 @@
 
         /* Footer Styles */
         footer {
-            background: #243340;
-            color: #F2F2F2;
+            background: linear-gradient(135deg, #151723, #1a1f2e);
+            color: #e2e3e7;
             padding: 2rem;
             margin-top: auto;
         }
@@ -455,8 +564,10 @@
         }
 
         .footer-section h3 {
-            margin-bottom: 1rem;
-            color: #D92525;
+            color: #d2843f;
+            background: linear-gradient(45deg, #d2843f, #ca7769);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .footer-section ul {
@@ -468,12 +579,12 @@
         }
 
         .footer-section ul li a {
-            color: white;
+            color: #e2e3e7;
             text-decoration: none;
         }
 
         .footer-section ul li a:hover {
-            color: #D92525;
+            color: #d2843f;
         }
 
         .social-links {
@@ -495,7 +606,105 @@
             text-align: center;
             margin-top: 2rem;
             padding-top: 1rem;
-            border-top: 1px solid rgba(242, 80, 80, 0.2);
+            border-top: 1px solid rgba(210, 132, 63, 0.1);
+        }
+
+        /* Creativity Corner Styles */
+        .creativity-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, rgba(21, 23, 35, 0.95), rgba(26, 31, 46, 0.95));
+            color: #e2e3e7;
+        }
+
+        .creativity-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .creativity-content h2 {
+            color: #e2e3e7;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .creativity-content h2 span {
+            background: linear-gradient(45deg, #d2843f, #ca7769, #b03b8c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .creativity-content p {
+            color: #e2e3e7;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .creativity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .creativity-item {
+            background: rgba(226, 227, 231, 0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(210, 132, 63, 0.1);
+        }
+
+        .creativity-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .creativity-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: #1a1a1a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .creativity-icon img {
+            max-width: 60%;
+            max-height: 60%;
+            object-fit: contain;
+        }
+
+        .creativity-item h3 {
+            color: #d2843f;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #d2843f, #ca7769);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .creativity-item p {
+            color: #e2e3e7;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        /* Add gradient animation */
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
     </style>
 </head>
@@ -503,6 +712,17 @@
     <header>
         <div class="header-content">
             <a href="index.html" class="logo">Streamer Tips</a>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search tools, guides, tutorials...">
+                <div class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                </div>
+                <div class="search-results">
+                    <!-- Search results will be populated dynamically -->
+                </div>
+            </div>
             <nav class="nav-menu">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
@@ -560,9 +780,9 @@
                             <img src="https://www.voicemod.net/wp-content/uploads/2020/05/voicemod-logo.png" alt="Voicemod">
                         </div>
                         <div class="tool-info">
-                            <h3>xsplit</h3>
-                            <p>xSplit is a powerful streaming software that allows you to create and manage multiple streams simultaneously. It offers a wide range of features, including scene transitions, audio mixing, and chat integration.</p>
-                            <a href="https://www.voicemod.net/" class="tool-link" target="_blank">
+                            <h3>Meld Studio</h3>
+                            <p>Meld Studio is a cutting-edge digital design platform that empowers creators to seamlessly blend artistry with technology.</p>
+                            <a href="https://meldstudio.co/" class="tool-link" target="_blank">
                                 Learn More
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -576,7 +796,7 @@
                         </div>
                         <div class="tool-info">
                             <h3>Lightstream Studio</h3>
-                            <p>Lightstream Studio is a powerful streaming software that allows you to create and manage multiple streams simultaneously. It offers a wide range of features, including scene transitions, audio mixing, and chat integration.</p>
+                            <p>Lightstream Studio is a cloud-based live production platform that lets you create professional-quality streams.</p>
                             <a href="https://golightstream.com/twitch/" class="tool-link" target="_blank">
                                 Learn More
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -591,7 +811,7 @@
                         </div>
                         <div class="tool-info">
                             <h3>Talk Studio</h3>
-                            <p>Talk Studio is a powerful streaming software that allows you to create and manage multiple streams simultaneously. It offers a wide range of features, including scene transitions, audio mixing, and chat integration.</p>
+                            <p>Talk Studio is an innovative audio production platform designed to make professional-quality podcasting and voice recording accessible to everyone.</p>
                             <a href="https://streamlabs.com/talk-studio" class="tool-link" target="_blank">
                                 Learn More
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -605,8 +825,8 @@
                             <img src="https://www.logitechg.com/content/dam/gaming/en/products/pro-x-microphone/pro-x-microphone-gallery-1.png" alt="Logitech G Pro X Microphone">
                         </div>
                         <div class="tool-info">
-                            <h3>PRISM Live Studio Desktop</h3>
-                            <p>Live Studio Desktop is a powerful streaming software that allows you to create and manage multiple streams simultaneously. It offers a wide range of features, including scene transitions, audio mixing, and chat integration.</p>
+                            <h3>PRISM Live Studio</h3>
+                            <p>Is an all-in-one mobile streaming and content creation app that empowers creators to produce high-quality live broadcasts and videos with professional-grade effects.</p>
                             <a href="https://prismlive.com/en_us/desktop.html" class="tool-link" target="_blank">
                                 Learn More
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -624,13 +844,13 @@
                 <h2>Tool <span>Categories</span></h2>
                 <p>Find the right tools for streaming needs</p>
                 <div class="categories-grid">
-                    <a href="streaming-software.html" class="category-item">
+                    <a href="alert-connections.html" class="category-item">
                         <div class="category-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                             </svg>
                         </div>
-                        <h3>Community Tools</h3>
+                        <h3>Alert Connections</h3>
                         <p>Tools for capturing, encoding, and broadcasting your content</p>
                     </a>
                     <a href="peripherals.html" class="category-item">
@@ -651,13 +871,13 @@
                         <h3>Visual Assets</h3>
                         <p>Overlays, alerts, and graphics to enhance your stream</p>
                     </a>
-                    <a href="community-tools.html" class="category-item">
+                    <a href="music.html" class="category-item">
                         <div class="category-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                             </svg>
                         </div>
-                        <h3>Engagement Tools</h3>
+                        <h3>Music</h3>
                         <p>Software to engage with your audience and build</p>
                     </a>
                     <a href="lighting-equipment.html" class="category-item">
@@ -688,15 +908,6 @@
                         <h3>Streaming PC</h3>
                         <p>Hardware recommendations for optimal streaming performance</p>
                     </a>
-                    <!-- <a href="streaming-accessories.html" class="category-item">
-                        <div class="category-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                            </svg>
-                        </div>
-                        <h3>Streaming Accessories</h3>
-                        <p>Essential accessories to complete your streaming setup</p>
-                    </a> -->
                     <a href="streaming-consoles.html" class="category-item">
                         <div class="category-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -706,33 +917,52 @@
                         <h3>Streaming Consoles</h3>
                         <p>Capture cards and equipment for console streaming</p>
                     </a>
-                    <!-- <a href="streaming-furniture.html" class="category-item">
-                        <div class="category-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                            </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Creativity Corner Section -->
+        <section class="creativity-section">
+            <div class="creativity-content">
+                <h2>Creativity <span>Corner</span></h2>
+                <p>Unleash your creative potential with these essential tools and resources</p>
+                
+                <div class="creativity-grid">
+                    <div class="creativity-item">
+                        <div class="creativity-icon">
+                            <img src="https://m.media-amazon.com/images/I/71YH+QJ0HmL._AC_SL1500_.jpg" alt="Canva">
                         </div>
-                        <h3>Streaming Furniture</h3>
-                        <p>Ergonomic furniture and setup solutions for streamers</p>
-                    </a>
-                    <a href="streaming-backgrounds.html" class="category-item">
-                        <div class="category-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
+                        <h3>Canva</h3>
+                        <p>Create stunning graphics, overlays, and thumbnails with this easy-to-use design tool.</p>
+                        <a href="https://www.canva.com" class="tool-link">Visit Site</a>
+                    </div>
+
+                    <div class="creativity-item">
+                        <div class="creativity-icon">
+                            <img src="https://m.media-amazon.com/images/I/71YH+QJ0HmL._AC_SL1500_.jpg" alt="Adobe Creative Cloud">
                         </div>
-                        <h3>Streaming Backgrounds</h3>
-                        <p>Green screens, backdrops, and virtual backgrounds</p>
-                    </a>
-                    <a href="streaming-software.html" class="category-item">
-                        <div class="category-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                            </svg>
+                        <h3>Adobe Creative Cloud</h3>
+                        <p>Professional-grade tools for video editing, graphic design, and content creation.</p>
+                        <a href="https://www.adobe.com/creativecloud.html" class="tool-link">Visit Site</a>
+                    </div>
+
+                    <div class="creativity-item">
+                        <div class="creativity-icon">
+                            <img src="https://m.media-amazon.com/images/I/71YH+QJ0HmL._AC_SL1500_.jpg" alt="Fiverr">
                         </div>
-                        <h3>Streaming Software</h3>
-                        <p>Advanced software tools for professional streaming</p>
-                    </a> -->
+                        <h3>Fiverr</h3>
+                        <p>Find talented freelancers for custom overlays, animations, and branding.</p>
+                        <a href="https://www.fiverr.com" class="tool-link">Visit Site</a>
+                    </div>
+
+                    <div class="creativity-item">
+                        <div class="creativity-icon">
+                            <img src="https://m.media-amazon.com/images/I/71YH+QJ0HmL._AC_SL1500_.jpg" alt="StreamElements">
+                        </div>
+                        <h3>StreamElements</h3>
+                        <p>Free overlays, alerts, and widgets to enhance your stream's visual appeal.</p>
+                        <a href="https://streamelements.com" class="tool-link">Visit Site</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -789,5 +1019,53 @@
             <p>&copy; 2025 StreamerTips All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        const searchInput = document.querySelector('.search-input');
+        const searchResults = document.querySelector('.search-results');
+
+        // Sample data for search results
+        const searchData = [
+            { title: 'Streamlabs Setup Guide', description: 'Learn how to set up Streamlabs for your stream', url: 'creator-tools.html#streamlabs' },
+            { title: 'OBS Studio Tutorial', description: 'Complete guide to using OBS Studio', url: 'creator-tools.html#obs' },
+            { title: 'Streaming Equipment Guide', description: 'Essential equipment for streamers', url: 'peripherals.html' },
+            { title: 'Lighting Setup Guide', description: 'How to set up your streaming lighting', url: 'lighting-equipment.html' },
+            { title: 'Camera Setup Tutorial', description: 'Setting up your streaming camera', url: 'camera-gear.html' },
+            { title: 'Alert Setup Guide', description: 'How to set up stream alerts', url: 'alert-connections.html' },
+            { title: 'Music for Streams', description: 'Copyright-safe music for your stream', url: 'music.html' }
+        ];
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            if (searchTerm.length > 0) {
+                const filteredResults = searchData.filter(item => 
+                    item.title.toLowerCase().includes(searchTerm) || 
+                    item.description.toLowerCase().includes(searchTerm)
+                );
+
+                if (filteredResults.length > 0) {
+                    searchResults.innerHTML = filteredResults.map(item => `
+                        <a href="${item.url}" class="search-result-item">
+                            <h4>${item.title}</h4>
+                            <p>${item.description}</p>
+                        </a>
+                    `).join('');
+                    searchResults.classList.add('active');
+                } else {
+                    searchResults.innerHTML = '<div class="search-result-item">No results found</div>';
+                    searchResults.classList.add('active');
+                }
+            } else {
+                searchResults.classList.remove('active');
+            }
+        });
+
+        // Close search results when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-container')) {
+                searchResults.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html> 

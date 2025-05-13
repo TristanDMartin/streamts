@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating Streaming Accounts - Streamer Tips</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header Styles */
+        header {
+            background: #243340;
+            padding: 1.2rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(242, 242, 242, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #D92525;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #D92525;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px - 200px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: #243340;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 4rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .guide-section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .guide-section h2 {
+            color: #243340;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .guide-section p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .guide-section ul {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .guide-section ul li {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .guide-section ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #D92525;
+        }
+
+        .platform-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .platform-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .platform-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-color: #D92525;
+        }
+
+        .platform-item h3 {
+            color: #243340;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .platform-item p {
+            color: #666;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .emoji-icon {
+            font-size: 2rem;
+        }
+
+        .next-steps {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-left: 4px solid #D92525;
+        }
+
+        .next-steps h3 {
+            color: #243340;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">Streamer Tips</a>
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="streaming-pc.html">Streaming PC</a>
+                <a href="peripherals.html">Peripherals</a>
+                <a href="camera-gear.html">Camera Gear</a>
+                <a href="lighting-equipment.html">Lighting</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Creating Your Streaming Accounts</h1>
+                <p>A beginner's guide to setting up your streaming presence</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="guide-section">
+                <p>Before you can go live and share your content with the world, you need to set up your streaming accounts on the platform(s) you want to stream to. Don't worry—it's quick and free!</p>
+
+                <h2><span class="emoji-icon">🔷</span> 1. Choose Your Platform</h2>
+                <p>The most popular streaming platforms are:</p>
+                <div class="platform-list">
+                    <a href="twitch-setup.html" target="_blank" class="platform-item">
+                        <h3>Twitch</h3>
+                        <p>Great for gaming, Just Chatting, and building a community.</p>
+                    </a>
+                    <a href="youtube-setup.html" target="_blank" class="platform-item">
+                        <h3>YouTube</h3>
+                        <p>Ideal for live streams and uploading videos.</p>
+                    </a>
+                    <a href="kick-setup.html" target="_blank" class="platform-item">
+                        <h3>Kick</h3>
+                        <p>A newer platform with fewer rules and a growing audience.</p>
+                    </a>
+                    <a href="facebook-gaming-setup.html" target="_blank" class="platform-item">
+                        <h3>Facebook Gaming</h3>
+                        <p>Tied into Facebook's massive user base.</p>
+                    </a>
+                </div>
+                <p>Pick one to start with—you can always expand later.</p>
+
+                <h2><span class="emoji-icon">🔐</span> 2. Create Your Account</h2>
+                <p>Head to the platform's website (e.g., twitch.tv) and:</p>
+                <ul>
+                    <li>Click Sign Up</li>
+                    <li>Choose a username (make it simple, searchable, and something you like)</li>
+                    <li>Set your password and email</li>
+                    <li>Complete any verification steps</li>
+                </ul>
+                <p>Your username is how people will find and remember you—so try to pick something unique but easy to say.</p>
+
+                <h2><span class="emoji-icon">🖼️</span> 3. Set Up Your Profile</h2>
+                <p>After signing up, personalize your channel:</p>
+                <ul>
+                    <li>Add a profile picture (a logo or photo works fine)</li>
+                    <li>Write a short bio about who you are or what you stream</li>
+                    <li>Add a banner or background image if you want to make it stand out</li>
+                </ul>
+                <p>Don't stress about making it perfect—it's totally fine to update things as you grow.</p>
+
+                <div class="next-steps">
+                    <h3>✅ What's Next?</h3>
+                    <p>Once your account is made, your next step is to connect your streaming software (like OBS) to the platform using a Stream Key or by logging in through the software. Then you're ready to go live!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html> 

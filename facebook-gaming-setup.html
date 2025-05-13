@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Gaming Setup - Streamer Tips</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #0B0C10;
+            color: #C5C6C7;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(31, 40, 51, 0.95);
+            padding: 1.2rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid #45A29E;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+
+        .logo {
+            color: #66FCF1;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
+            text-shadow: 0 4px 8px rgba(102, 252, 241, 0.3);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: #C5C6C7;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #66FCF1;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 8px rgba(102, 252, 241, 0.5);
+        }
+
+        .nav-menu a:hover {
+            color: #66FCF1;
+            transform: translateY(-2px);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px - 200px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #1F2833 0%, #0B0C10 100%);
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid #45A29E;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(102, 252, 241, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #C5C6C7;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #66FCF1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            color: #C5C6C7;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .guide-section {
+            background: rgba(31, 40, 51, 0.95);
+            border-radius: 15px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid #45A29E;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .guide-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .guide-section h2 {
+            color: #66FCF1;
+            font-size: 2.4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .guide-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #45A29E;
+            border-radius: 2px;
+        }
+
+        .guide-section p {
+            color: #C5C6C7;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            max-width: 900px;
+        }
+
+        .guide-section ol {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+            max-width: 900px;
+        }
+
+        .guide-section ol li {
+            color: #C5C6C7;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .guide-section ol li:hover {
+            transform: translateX(5px);
+        }
+
+        .guide-section ul li {
+            color: #C5C6C7;
+            margin-bottom: 0.5rem;
+            transition: transform 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .guide-section ul li:hover {
+            transform: translateX(5px);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 2rem 0;
+            border-radius: 15px;
+            border: 1px solid #45A29E;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .video-container:hover {
+            transform: scale(1.02);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .note-box {
+            background: rgba(31, 40, 51, 0.95);
+            border-left: 4px solid #66FCF1;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            max-width: 900px;
+        }
+
+        .note-box:hover {
+            transform: translateX(5px);
+        }
+
+        .note-box h3 {
+            color: #66FCF1;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .optional-box {
+            background: rgba(31, 40, 51, 0.95);
+            border-left: 4px solid #45A29E;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            max-width: 900px;
+        }
+
+        .optional-box:hover {
+            transform: translateX(5px);
+        }
+
+        .optional-box h3 {
+            color: #45A29E;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .optional-box ul {
+            list-style: none;
+            padding-left: 1rem;
+        }
+
+        .optional-box ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .optional-box ul li:hover {
+            transform: translateX(5px);
+        }
+
+        .optional-box ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #45A29E;
+            transition: transform 0.3s ease;
+        }
+
+        .optional-box ul li:hover::before {
+            transform: translateX(3px);
+        }
+
+        @media (max-width: 1200px) {
+            .content-section {
+                padding: 4rem 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content-section {
+                padding: 3rem 1.5rem;
+            }
+            
+            .guide-section {
+                padding: 2rem;
+            }
+
+            .guide-section h2 {
+                font-size: 2rem;
+            }
+
+            .guide-section p, .guide-section ol li {
+                font-size: 1.1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .nav-menu {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">Streamer Tips</a>
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="streaming-pc.html">Streaming PC</a>
+                <a href="peripherals.html">Peripherals</a>
+                <a href="camera-gear.html">Camera Gear</a>
+                <a href="lighting-equipment.html">Lighting</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>How to Create a Facebook Gaming Account</h1>
+                <p>Step-by-step guide to setting up your Facebook Gaming presence</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="guide-section">
+                <p>Facebook Gaming is a great option for new streamers, especially if you already have a Facebook presence and want to grow your audience through your existing network.</p>
+
+                <h2>Steps:</h2>
+                <ol>
+                    <li>Sign in to Facebook: Go to facebook.com and log in with your personal account. If you don't have one, create an account first.</li>
+                    <li>Create a Facebook Page:
+                        <ul>
+                            <li>Visit Facebook Pages.</li>
+                            <li>Choose "Gaming Video Creator" as the category.</li>
+                            <li>Give your Page a name (this can be your stream name or brand).</li>
+                            <li>Add a profile picture and banner that represents your stream.</li>
+                        </ul>
+                    </li>
+                    <li>Set up your Page:
+                        <ul>
+                            <li>Fill out the "About" section.</li>
+                            <li>Add links to your other social platforms (like Twitch or YouTube).</li>
+                            <li>Enable messaging if you want to connect directly with your audience.</li>
+                        </ul>
+                    </li>
+                    <li>Connect Your Stream Software:
+                        <ul>
+                            <li>Open your streaming software (like OBS or Streamlabs).</li>
+                            <li>Go to your Creator Studio: facebook.com/creatorstudio.</li>
+                            <li>Under Live Dashboard, copy your Stream Key and Server URL.</li>
+                            <li>Paste them into your streaming software settings.</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="optional-box">
+                    <h3>Level Up Program (Optional)</h3>
+                    <p>Apply for the Level Up Program to unlock additional features:</p>
+                    <ul>
+                        <li>Go to Facebook Gaming Creator Portal</li>
+                        <li>Make sure you meet the requirements (like streaming gaming content regularly and having at least 100 followers on your page)</li>
+                        <li>This program unlocks HD streaming, monetization tools, and more</li>
+                    </ul>
+                </div>
+
+                <div class="note-box">
+                    <h3>Important Note</h3>
+                    <p>Keep your Stream Key private and never share it with anyone. This key is used to authenticate your streaming software with Facebook Gaming.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html> 

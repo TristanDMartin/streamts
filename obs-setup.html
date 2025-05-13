@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OBS/Streamlabs Setup - Streamer Tips</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header Styles */
+        header {
+            background: #243340;
+            padding: 1.2rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(242, 242, 242, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #D92525;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #D92525;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 0;
+            min-height: calc(100vh - 80px - 200px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: #243340;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .guide-section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .guide-section h2 {
+            color: #243340;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .guide-section h3 {
+            color: #243340;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .guide-section p {
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .guide-section ul {
+            list-style-position: inside;
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+        }
+
+        .guide-section li {
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background-color: #D92525;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: #A64444;
+            transform: translateY(-2px);
+        }
+
+        .note-box {
+            background: #f8f9fa;
+            border-left: 4px solid #D92525;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .note-box p {
+            margin: 0;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">Streamer Tips</a>
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="streaming-pc.html">Streaming PC</a>
+                <a href="peripherals.html">Peripherals</a>
+                <a href="camera-gear.html">Camera Gear</a>
+                <a href="lighting-equipment.html">Lighting</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>OBS/Streamlabs Setup Guide</h1>
+                <p>Learn how to set up and configure your streaming software for the best quality and performance</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="guide-section">
+                <h2>Choosing Your Streaming Software</h2>
+                <p>There are two main options for streaming software:</p>
+                <ul>
+                    <li><strong>OBS Studio:</strong> Free, open-source software with powerful features and customization options</li>
+                    <li><strong>Streamlabs OBS:</strong> Based on OBS Studio but with additional features and a more user-friendly interface</li>
+                </ul>
+                <div class="note-box">
+                    <p>Both options are excellent choices. OBS Studio is lighter on system resources, while Streamlabs OBS offers more built-in features and a more intuitive interface.</p>
+                </div>
+            </div>
+
+            <div class="guide-section">
+                <h2>OBS Studio Setup</h2>
+                <h3>1. Download and Install</h3>
+                <p>Download OBS Studio from the official website:</p>
+                <a href="https://obsproject.com/download" class="download-btn" target="_blank">Download OBS Studio</a>
+
+                <h3>2. Initial Setup</h3>
+                <ul>
+                    <li>Run the Auto-Configuration Wizard when you first open OBS</li>
+                    <li>Select your streaming platform (Twitch, YouTube, etc.)</li>
+                    <li>Choose your desired stream quality</li>
+                    <li>Let OBS test your internet connection</li>
+                </ul>
+
+                <h3>3. Basic Settings</h3>
+                <ul>
+                    <li>Set your output resolution (typically 1920x1080)</li>
+                    <li>Choose your frame rate (30 or 60 FPS)</li>
+                    <li>Select your encoder (x264 for CPU or NVENC for NVIDIA GPUs)</li>
+                    <li>Set your bitrate (recommended: 6000 Kbps for 1080p)</li>
+                </ul>
+            </div>
+
+            <div class="guide-section">
+                <h2>Streamlabs OBS Setup</h2>
+                <h3>1. Download and Install</h3>
+                <p>Download Streamlabs OBS from the official website:</p>
+                <a href="https://streamlabs.com/" class="download-btn" target="_blank">Download Streamlabs OBS</a>
+
+                <h3>2. Initial Setup</h3>
+                <ul>
+                    <li>Sign in with your streaming platform account</li>
+                    <li>Import your existing OBS settings if you have them</li>
+                    <li>Choose your theme and layout</li>
+                </ul>
+
+                <h3>3. Key Features</h3>
+                <ul>
+                    <li>Built-in alert box and widgets</li>
+                    <li>Stream labels for viewer counts and donations</li>
+                    <li>Chat box integration</li>
+                    <li>Theme library for quick setup</li>
+                </ul>
+            </div>
+
+            <div class="guide-section">
+                <h2>Essential Settings for Both</h2>
+                <h3>Audio Setup</h3>
+                <ul>
+                    <li>Set up your microphone input</li>
+                    <li>Configure desktop audio</li>
+                    <li>Set up audio filters (noise suppression, compression)</li>
+                </ul>
+
+                <h3>Scene Setup</h3>
+                <ul>
+                    <li>Create different scenes for different content</li>
+                    <li>Add sources (game capture, webcam, overlays)</li>
+                    <li>Set up scene transitions</li>
+                </ul>
+
+                <h3>Stream Settings</h3>
+                <ul>
+                    <li>Set your stream key (keep this private!)</li>
+                    <li>Configure stream delay if needed</li>
+                    <li>Set up stream markers and clips</li>
+                </ul>
+            </div>
+
+            <div class="guide-section">
+                <h2>Performance Optimization</h2>
+                <ul>
+                    <li>Use Game Capture instead of Window Capture when possible</li>
+                    <li>Enable hardware encoding if available</li>
+                    <li>Close unnecessary background applications</li>
+                    <li>Monitor CPU usage and adjust settings accordingly</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+</body>
+</html> 

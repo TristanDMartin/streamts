@@ -30,6 +30,7 @@
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
+            gap: 2rem;
         }
 
         .logo {
@@ -39,6 +40,89 @@
             text-decoration: none;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             letter-spacing: 0.5px;
+        }
+
+        .search-container {
+            flex: 1;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.7rem 1.2rem;
+            padding-right: 2.5rem;
+            border-radius: 5px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .search-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 2px rgba(217, 37, 37, 0.3);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.5);
+            pointer-events: none;
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #243340;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .search-results.active {
+            display: block;
+        }
+
+        .search-result-item {
+            padding: 0.8rem 1rem;
+            color: white;
+            text-decoration: none;
+            display: block;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-item:hover {
+            background: rgba(217, 37, 37, 0.1);
+            color: #D92525;
+        }
+
+        .search-result-item h4 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .search-result-item p {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .nav-menu {
@@ -328,6 +412,17 @@
     <header>
         <div class="header-content">
             <a href="index.html" class="logo">Streamer Tips</a>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search tools, guides, tutorials...">
+                <div class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                </div>
+                <div class="search-results">
+                    <!-- Search results will be populated dynamically -->
+                </div>
+            </div>
             <nav class="nav-menu">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
@@ -612,5 +707,53 @@
             <p>&copy; 2025 StreamerTips All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        const searchInput = document.querySelector('.search-input');
+        const searchResults = document.querySelector('.search-results');
+
+        // Sample data for search results
+        const searchData = [
+            { title: 'Streamlabs Setup Guide', description: 'Learn how to set up Streamlabs for your stream', url: 'creator-tools.html#streamlabs' },
+            { title: 'OBS Studio Tutorial', description: 'Complete guide to using OBS Studio', url: 'creator-tools.html#obs' },
+            { title: 'Streaming Equipment Guide', description: 'Essential equipment for streamers', url: 'peripherals.html' },
+            { title: 'Lighting Setup Guide', description: 'How to set up your streaming lighting', url: 'lighting-equipment.html' },
+            { title: 'Camera Setup Tutorial', description: 'Setting up your streaming camera', url: 'camera-gear.html' },
+            { title: 'Alert Setup Guide', description: 'How to set up stream alerts', url: 'alert-connections.html' },
+            { title: 'Music for Streams', description: 'Copyright-safe music for your stream', url: 'music.html' }
+        ];
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            if (searchTerm.length > 0) {
+                const filteredResults = searchData.filter(item => 
+                    item.title.toLowerCase().includes(searchTerm) || 
+                    item.description.toLowerCase().includes(searchTerm)
+                );
+
+                if (filteredResults.length > 0) {
+                    searchResults.innerHTML = filteredResults.map(item => `
+                        <a href="${item.url}" class="search-result-item">
+                            <h4>${item.title}</h4>
+                            <p>${item.description}</p>
+                        </a>
+                    `).join('');
+                    searchResults.classList.add('active');
+                } else {
+                    searchResults.innerHTML = '<div class="search-result-item">No results found</div>';
+                    searchResults.classList.add('active');
+                }
+            } else {
+                searchResults.classList.remove('active');
+            }
+        });
+
+        // Close search results when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-container')) {
+                searchResults.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html> 

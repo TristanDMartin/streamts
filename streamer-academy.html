@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streamer Academy - Education Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header Styles */
+        header {
+            background: #243340;
+            padding: 1.2rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(242, 242, 242, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+        }
+
+        .search-container {
+            flex: 1;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.7rem 1.2rem;
+            padding-right: 2.5rem;
+            border-radius: 5px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .search-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 2px rgba(217, 37, 37, 0.3);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.5);
+            pointer-events: none;
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #243340;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .search-results.active {
+            display: block;
+        }
+
+        .search-result-item {
+            padding: 0.8rem 1rem;
+            color: white;
+            text-decoration: none;
+            display: block;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-item:hover {
+            background: rgba(217, 37, 37, 0.1);
+            color: #D92525;
+        }
+
+        .search-result-item h4 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .search-result-item p {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #D92525;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #D92525;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .download-btn {
+            background-color: #D92525;
+            color: #F2F2F2;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .download-btn:hover {
+            background-color: #A64444;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px - 200px);
+        }
+
+        /* Academy Banner */
+        .academy-banner {
+            background: #243340;
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .academy-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(242, 80, 80, 0.2) 0%, transparent 100%);
+            z-index: 1;
+        }
+
+        .academy-banner-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .academy-banner h1 {
+            color: white;
+            font-size: 4.5rem;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+
+        .academy-banner h1 span {
+            color: #D92525;
+        }
+
+        .academy-banner p {
+            color: #F2F2F2;
+            font-size: 1.8rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Skill Levels Section */
+        .skill-levels {
+            padding: 5rem 2rem;
+            background: #243340;
+        }
+
+        .skill-levels-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skill-levels h2 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .skill-levels h2 span {
+            color: #D92525;
+        }
+
+        .skill-level-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .skill-level-card {
+            background: rgba(242, 242, 242, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(242, 80, 80, 0.2);
+        }
+
+        .skill-level-card:hover {
+            transform: translateY(-5px);
+            border-color: #D92525;
+        }
+
+        .skill-level-card h3 {
+            color: #D92525;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-level-card ul {
+            list-style: none;
+        }
+
+        .skill-level-card ul li {
+            color: white;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .skill-level-card ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #D92525;
+        }
+
+        .skill-level-card ul li a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+        }
+
+        .skill-level-card ul li a:hover {
+            color: #D92525;
+            transform: translateX(5px);
+        }
+
+        /* Platforms Section */
+        .platforms {
+            padding: 5rem 2rem;
+            background: #243340;
+        }
+
+        .platforms-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .platforms h2 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .platforms h2 span {
+            color: #D92525;
+        }
+
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .platform-card {
+            background: rgba(242, 242, 242, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(242, 80, 80, 0.2);
+        }
+
+        .platform-card:hover {
+            transform: translateY(-5px);
+            border-color: #D92525;
+        }
+
+        .platform-card h3 {
+            color: #D92525;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .platform-card h3 img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .platform-card p {
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .platform-card ul {
+            list-style: none;
+        }
+
+        .platform-card ul li {
+            color: white;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .platform-card ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #D92525;
+        }
+
+        .platform-card ul li a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+        }
+
+        .platform-card ul li a:hover {
+            color: #D92525;
+            transform: translateX(5px);
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #243340;
+            color: #F2F2F2;
+            padding: 2rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #D92525;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-section ul li a:hover {
+            color: #D92525;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: #D92525;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(242, 80, 80, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">Streamer Tips</a>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search tools, guides, tutorials...">
+                <div class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                </div>
+                <div class="search-results">
+                    <!-- Search results will be populated dynamically -->
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="creator-tools.html">Creator Tools</a>
+                <a href="streamer-academy.html">Streamer Academy</a>
+            </nav>
+            <a href="#" class="download-btn">Monthly Streamers</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="academy-banner">
+            <div class="academy-banner-content">
+                <h1>Streamer <span>Academy</span></h1>
+                <p>Your comprehensive guide to streaming success</p>
+            </div>
+        </section>
+
+        <section class="skill-levels">
+            <div class="skill-levels-content">
+                <h2>Learn by <span>Skill Level</span></h2>
+                <div class="skill-level-grid">
+                    <div class="skill-level-card">
+                        <h3>Beginner</h3>
+                        <ul>
+                            <li><a href="new-to-streaming.html" target="_blank">New to Streaming</a></li>
+                            <li><a href="obs-setup.html" target="_blank">How to set up OBS/Streamlabs</a></li>
+                            <li><a href="creating-accounts.html" target="_blank">Creating streaming accounts</a></li>
+                            <li><a href="microphone-setup.html" target="_blank">Basic microphone setup</a></li>
+                            <li><a href="webcam-setup.html" target="_blank">Webcam configuration</a></li>
+                            <li><a href="https://help.twitch.tv/s/article/streaming-etiquette?language=en_US" target="_blank">Streaming etiquette</a></li>
+                            <li><a href="https://help.streamlabs.com/hc/en-us/articles/360000127772-How-to-Add-Overlays-to-Your-Stream" target="_blank">Basic overlay setup</a></li>
+                        </ul>
+                    </div>
+                    <div class="skill-level-card">
+                        <h3>Intermediate</h3>
+                        <ul>
+                            <li><a href="https://obsproject.com/wiki/General-Performance-and-Encoding-Issues" target="_blank">Bitrate optimization</a></li>
+                            <li><a href="https://obsproject.com/wiki/Transitions-Guide" target="_blank">Scene transitions</a></li>
+                            <li><a href="https://help.streamlabs.com/hc/en-us/articles/360000127772-How-to-Add-Overlays-to-Your-Stream" target="_blank">Chat bot integration</a></li>
+                            <li><a href="https://help.streamlabs.com/hc/en-us/articles/360000127772-How-to-Add-Overlays-to-Your-Stream" target="_blank">Custom overlays</a></li>
+                            <li><a href="https://help.twitch.tv/s/article/how-to-create-panels?language=en_US" target="_blank">Twitch panels design</a></li>
+                            <li><a href="https://help.streamlabs.com/hc/en-us/articles/360000127772-How-to-Add-Overlays-to-Your-Stream" target="_blank">Stream alerts setup</a></li>
+                            <li><a href="https://obsproject.com/wiki/Filters-Guide" target="_blank">Audio mixing basics</a></li>
+                        </ul>
+                    </div>
+                    <div class="skill-level-card">
+                        <h3>Advanced</h3>
+                        <ul>
+                            <li><a href="https://obsproject.com/wiki/Dual-PC-Streaming-Setup" target="_blank">Dual PC streaming setup</a></li>
+                            <li><a href="https://obsproject.com/wiki/NDI-Integration" target="_blank">NDI configuration</a></li>
+                            <li><a href="https://vb-audio.com/Voicemeeter/banana.htm" target="_blank">Audio routing with Voicemeeter</a></li>
+                            <li><a href="https://www.thegoxlr.com/support" target="_blank">GoXLR advanced features</a></li>
+                            <li><a href="https://obsproject.com/wiki/Stream-Deck-Integration" target="_blank">Stream automation</a></li>
+                            <li><a href="https://obsproject.com/wiki/Scenes-and-Sources-Guide" target="_blank">Advanced scene management</a></li>
+                            <li><a href="https://obsproject.com/wiki/Filters-Guide" target="_blank">Professional audio processing</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="platforms">
+            <div class="platforms-content">
+                <h2>Platform <span>Guides</span></h2>
+                <div class="platform-grid">
+                    <div class="platform-card">
+                        <h3><img src="https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c94346.png" alt="Twitch"> Twitch</h3>
+                        <p>Master the world's leading live streaming platform</p>
+                        <ul>
+                            <li><a href="https://help.twitch.tv/s/article/affiliate-program-requirements?language=en_US" target="_blank">Affiliate/Partner requirements</a></li>
+                            <li><a href="https://help.twitch.tv/s/article/chat-commands?language=en_US" target="_blank">Twitch chat commands</a></li>
+                            <li><a href="https://help.twitch.tv/s/article/channel-points-guide?language=en_US" target="_blank">Channel points setup</a></li>
+                            <li><a href="https://help.twitch.tv/s/article/twitch-extensions?language=en_US" target="_blank">Twitch extensions</a></li>
+                            <li><a href="https://help.twitch.tv/s/article/categories-and-tags?language=en_US" target="_blank">Stream categories</a></li>
+                            <li><a href="https://help.twitch.tv/s/article/analytics?language=en_US" target="_blank">Twitch analytics</a></li>
+                        </ul>
+                    </div>
+                    <div class="platform-card">
+                        <h3><img src="https://www.youtube.com/s/desktop/4c3f79c5/img/favicon_32x32.png" alt="YouTube"> YouTube</h3>
+                        <p>Learn to stream on the world's largest video platform</p>
+                        <ul>
+                            <li><a href="https://support.google.com/youtube/answer/2474026" target="_blank">YouTube Live setup</a></li>
+                            <li><a href="https://support.google.com/youtube/answer/7277005" target="_blank">Super Chat features</a></li>
+                            <li><a href="https://support.google.com/youtube/answer/6304294" target="_blank">Membership setup</a></li>
+                            <li><a href="https://support.google.com/youtube/answer/9002587" target="_blank">YouTube analytics</a></li>
+                            <li><a href="https://support.google.com/youtube/answer/2853700" target="_blank">Stream optimization</a></li>
+                            <li><a href="https://support.google.com/youtube/answer/2853702" target="_blank">Content strategy</a></li>
+                        </ul>
+                    </div>
+                    <div class="platform-card">
+                        <h3><img src="https://kick.com/favicon.ico" alt="Kick"> Kick</h3>
+                        <p>Explore the new streaming platform</p>
+                        <ul>
+                            <li><a href="https://kick.com/help" target="_blank">Kick account setup</a></li>
+                            <li><a href="https://kick.com/help/streaming" target="_blank">Stream settings</a></li>
+                            <li><a href="https://kick.com/help/chat" target="_blank">Chat features</a></li>
+                            <li><a href="https://kick.com/help/monetization" target="_blank">Monetization options</a></li>
+                            <li><a href="https://kick.com/help/community" target="_blank">Community building</a></li>
+                            <li><a href="https://kick.com/help/tools" target="_blank">Platform-specific tools</a></li>
+                        </ul>
+                    </div>
+                    <div class="platform-card">
+                        <h3><img src="https://www.tiktok.com/favicon.ico" alt="TikTok"> TikTok Live</h3>
+                        <p>Master mobile streaming and engagement</p>
+                        <ul>
+                            <li><a href="https://support.tiktok.com/en/using-tiktok/live-streaming" target="_blank">TikTok Live setup</a></li>
+                            <li><a href="https://support.tiktok.com/en/using-tiktok/live-streaming/how-to-go-live" target="_blank">Mobile streaming tips</a></li>
+                            <li><a href="https://support.tiktok.com/en/using-tiktok/live-streaming/gifts-and-coins" target="_blank">Gift system</a></li>
+                            <li><a href="https://support.tiktok.com/en/using-tiktok/live-streaming/live-streaming-features" target="_blank">Live engagement</a></li>
+                            <li><a href="https://support.tiktok.com/en/using-tiktok/live-streaming/live-streaming-best-practices" target="_blank">Content creation</a></li>
+                            <li><a href="https://support.tiktok.com/en/using-tiktok/live-streaming/live-streaming-promotion" target="_blank">Cross-platform promotion</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Community</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <ul>
+                    <li><a href="#">Discord</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 StreamerTips All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const searchInput = document.querySelector('.search-input');
+        const searchResults = document.querySelector('.search-results');
+
+        // Sample data for search results
+        const searchData = [
+            { title: 'OBS Studio Setup Guide', description: 'Complete guide to setting up OBS Studio', url: 'streamer-academy.html#obs-setup' },
+            { title: 'Streamlabs Setup Guide', description: 'Learn how to set up Streamlabs for your stream', url: 'streamer-academy.html#streamlabs-setup' },
+            { title: 'Microphone Setup Guide', description: 'How to set up your streaming microphone', url: 'streamer-academy.html#mic-setup' },
+            { title: 'Webcam Configuration', description: 'Setting up your streaming webcam', url: 'streamer-academy.html#webcam-setup' },
+            { title: 'Bitrate Optimization', description: 'Guide to optimal streaming bitrates', url: 'streamer-academy.html#bitrate' },
+            { title: 'Scene Transitions', description: 'Creating smooth scene transitions', url: 'streamer-academy.html#transitions' },
+            { title: 'Chat Bot Setup', description: 'Setting up chat bots for your stream', url: 'streamer-academy.html#chat-bot' },
+            { title: 'Dual PC Streaming', description: 'Guide to dual PC streaming setup', url: 'streamer-academy.html#dual-pc' },
+            { title: 'NDI Configuration', description: 'Setting up NDI for streaming', url: 'streamer-academy.html#ndi' },
+            { title: 'Audio Routing', description: 'Advanced audio routing with Voicemeeter', url: 'streamer-academy.html#audio-routing' }
+        ];
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            if (searchTerm.length > 0) {
+                const filteredResults = searchData.filter(item => 
+                    item.title.toLowerCase().includes(searchTerm) || 
+                    item.description.toLowerCase().includes(searchTerm)
+                );
+
+                if (filteredResults.length > 0) {
+                    searchResults.innerHTML = filteredResults.map(item => `
+                        <a href="${item.url}" class="search-result-item">
+                            <h4>${item.title}</h4>
+                            <p>${item.description}</p>
+                        </a>
+                    `).join('');
+                    searchResults.classList.add('active');
+                } else {
+                    searchResults.innerHTML = '<div class="search-result-item">No results found</div>';
+                    searchResults.classList.add('active');
+                }
+            } else {
+                searchResults.classList.remove('active');
+            }
+        });
+
+        // Close search results when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-container')) {
+                searchResults.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html> 

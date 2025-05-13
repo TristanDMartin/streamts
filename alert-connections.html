@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Streaming PC - Streamer Tips</title>
+    <title>Alert Connections - Streamer Tips</title>
     <style>
         * {
             margin: 0;
@@ -228,102 +228,127 @@
             margin-bottom: 2rem;
         }
 
-        /* PC Setup Section */
-        .pc-section {
+        /* Alert Services Section */
+        .alerts-section {
             padding: 5rem 2rem;
             background: #243340;
             color: #F2F2F2;
         }
 
-        .pc-content {
+        .alerts-content {
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .setup-card {
-            background: rgba(242, 242, 242, 0.1);
-            border-radius: 10px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(242, 80, 80, 0.2);
-        }
-
-        .setup-card h2 {
-            color: #D92525;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .setup-card h3 {
-            color: #D92525;
-            font-size: 1.5rem;
-            margin: 1.5rem 0 1rem;
-        }
-
-        .setup-card p {
-            color: #cccccc;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-
-        .requirements-grid {
+        .alerts-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin: 2rem 0;
+            margin-top: 3rem;
         }
 
-        .requirement-item {
+        .alert-item {
+            background: rgba(242, 242, 242, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(242, 80, 80, 0.2);
+        }
+
+        .alert-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-color: #D92525;
+        }
+
+        .alert-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: #1a1a1a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .alert-icon img {
+            max-width: 60%;
+            max-height: 60%;
+            object-fit: contain;
+        }
+
+        .alert-item h3 {
+            color: #D92525;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .alert-item p {
+            color: #cccccc;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .alert-features {
+            margin: 1.5rem 0;
+            padding: 1rem;
             background: rgba(0, 0, 0, 0.2);
-            padding: 1.5rem;
             border-radius: 5px;
         }
 
-        .requirement-item h4 {
+        .alert-features h4 {
             color: #D92525;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
 
-        .requirement-item ul {
+        .alert-features ul {
             list-style: none;
             color: #cccccc;
         }
 
-        .requirement-item li {
+        .alert-features li {
             margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
-        .requirement-item li::before {
+        .alert-features li::before {
             content: '•';
             color: #D92525;
         }
 
-        .setup-steps {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 1.5rem;
+        .alert-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: #D92525;
+            color: #F2F2F2;
+            padding: 0.7rem 1.2rem;
             border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s ease;
             margin-top: 1rem;
         }
 
-        .setup-steps ol {
-            padding-left: 1.5rem;
-            color: #cccccc;
+        .alert-link:hover {
+            background-color: #A64444;
+            transform: translateX(5px);
         }
 
-        .setup-steps li {
-            margin-bottom: 0.5rem;
-            line-height: 1.6;
+        .alert-link svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
         }
 
-        .note {
-            background: rgba(242, 80, 80, 0.1);
-            border-left: 4px solid #D92525;
-            padding: 1rem;
-            margin: 1rem 0;
-            color: #cccccc;
+        .alert-link:hover svg {
+            transform: translateX(3px);
         }
 
         /* Footer Styles */
@@ -399,136 +424,212 @@
     <main>
         <section class="hero-section">
             <div class="hero-content">
-                <h1>Streaming <span>PC Setup</span></h1>
-                <p>Everything you need to know about PC streaming setup</p>
+                <h1>Alert <span>Connections</span></h1>
+                <p>Enhance your stream with interactive alerts and viewer engagement tools</p>
             </div>
         </section>
 
-        <section class="pc-section">
-            <div class="pc-content">
-                <!-- Hardware Requirements -->
-                <div class="setup-card">
-                    <h2>Hardware Requirements</h2>
-                    <p>To stream effectively, you'll need a PC with sufficient processing power and the right peripherals. Here's what you need:</p>
-                    
-                    <div class="requirements-grid">
-                        <div class="requirement-item">
-                            <h4>Minimum Requirements</h4>
+        <section class="alerts-section">
+            <div class="alerts-content">
+                <div class="alerts-grid">
+                    <!-- Streamlabs -->
+                    <div class="alert-item">
+                        <div class="alert-icon">
+                            <img src="https://www.streamlabs.com/images/streamlabs-logo.png" alt="Streamlabs">
+                        </div>
+                        <h3>Streamlabs</h3>
+                        <p>All-in-one streaming software with customizable alerts, overlays, and donation tracking.</p>
+                        <div class="alert-features">
+                            <h4>Key Features</h4>
                             <ul>
-                                <li>Intel Core i5 or AMD Ryzen 5</li>
-                                <li>8GB RAM</li>
-                                <li>NVIDIA GTX 1060 or AMD RX 580</li>
-                                <li>1080p Webcam</li>
-                                <li>Basic USB Microphone</li>
-                                <li>5Mbps Upload Speed</li>
+                                <li>Customizable alerts and overlays</li>
+                                <li>Donation tracking and management</li>
+                                <li>Chat bot integration</li>
+                                <li>Stream analytics</li>
+                                <li>Merch store integration</li>
                             </ul>
                         </div>
-                        
-                        <div class="requirement-item">
-                            <h4>Recommended Setup</h4>
+                        <a href="https://streamlabs.com" class="alert-link" target="_blank">
+                            Visit Streamlabs
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- Throne -->
+                    <div class="alert-item">
+                        <div class="alert-icon">
+                            <img src="https://throne.com/favicon.ico" alt="Throne">
+                        </div>
+                        <h3>Throne</h3>
+                        <p>Wishlist platform for streamers to receive gifts and donations from their community.</p>
+                        <div class="alert-features">
+                            <h4>Key Features</h4>
                             <ul>
-                                <li>Intel Core i7 or AMD Ryzen 7</li>
-                                <li>16GB RAM</li>
-                                <li>NVIDIA RTX 2060 or AMD RX 5700</li>
-                                <li>1080p60 Webcam</li>
-                                <li>XLR Microphone with Audio Interface</li>
-                                <li>10Mbps Upload Speed</li>
+                                <li>Custom wishlist creation</li>
+                                <li>Anonymous gifting</li>
+                                <li>Stream alerts integration</li>
+                                <li>Multiple currency support</li>
+                                <li>Gift tracking system</li>
                             </ul>
                         </div>
-                        
-                        <div class="requirement-item">
-                            <h4>Premium Setup</h4>
+                        <a href="https://throne.com" class="alert-link" target="_blank">
+                            Visit Throne
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- StreamElements -->
+                    <div class="alert-item">
+                        <div class="alert-icon">
+                            <img src="https://streamelements.com/favicon.ico" alt="StreamElements">
+                        </div>
+                        <h3>StreamElements</h3>
+                        <p>Free streaming tools including overlays, alerts, and loyalty systems.</p>
+                        <div class="alert-features">
+                            <h4>Key Features</h4>
                             <ul>
-                                <li>Intel Core i9 or AMD Ryzen 9</li>
-                                <li>32GB RAM</li>
-                                <li>NVIDIA RTX 3080 or AMD RX 6800 XT</li>
-                                <li>4K Webcam</li>
-                                <li>Professional XLR Setup</li>
-                                <li>20Mbps Upload Speed</li>
+                                <li>Free overlays and alerts</li>
+                                <li>Loyalty point system</li>
+                                <li>Merch store integration</li>
+                                <li>Chat bot functionality</li>
+                                <li>Stream statistics</li>
                             </ul>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Software Setup -->
-                <div class="setup-card">
-                    <h2>Software Setup</h2>
-                    <p>Choose the right streaming software and configure it properly for optimal performance.</p>
-                    
-                    <div class="setup-steps">
-                        <h3>OBS Studio Setup</h3>
-                        <ol>
-                            <li>Download and install OBS Studio from obsproject.com</li>
-                            <li>Run the Auto-Configuration Wizard (Tools > Auto-Configuration Wizard)</li>
-                            <li>Set up your streaming platform (Twitch/YouTube)</li>
-                            <li>Configure your stream key</li>
-                            <li>Add your sources (Game Capture, Webcam, etc.)</li>
-                            <li>Set up your scenes and transitions</li>
-                            <li>Configure audio devices</li>
-                            <li>Test your stream settings</li>
-                        </ol>
+                        <a href="https://streamelements.com" class="alert-link" target="_blank">
+                            Visit StreamElements
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
                     </div>
 
-                    <div class="setup-steps">
-                        <h3>Streamlabs OBS Setup</h3>
-                        <ol>
-                            <li>Download and install Streamlabs OBS from streamlabs.com</li>
-                            <li>Log in with your streaming platform account</li>
-                            <li>Import your existing OBS settings (optional)</li>
-                            <li>Set up your stream alerts and overlays</li>
-                            <li>Configure your stream settings</li>
-                            <li>Add your sources and scenes</li>
-                            <li>Test your stream</li>
-                        </ol>
-                    </div>
-                </div>
-
-                <!-- Streaming Configuration -->
-                <div class="setup-card">
-                    <h2>Streaming Configuration</h2>
-                    <p>Optimize your stream settings for the best quality and performance.</p>
-                    
-                    <div class="setup-steps">
-                        <h3>Video Settings</h3>
-                        <ol>
-                            <li>Set your base (canvas) resolution to your monitor's native resolution</li>
-                            <li>Set output (scaled) resolution to 1920x1080 for 1080p streaming</li>
-                            <li>Set FPS to 60 for smooth gameplay</li>
-                            <li>Configure your bitrate (6000-8000 Kbps for 1080p60)</li>
-                            <li>Enable hardware encoding (NVENC or AMD VCE)</li>
-                        </ol>
+                    <!-- Crowd Control -->
+                    <div class="alert-item">
+                        <div class="alert-icon">
+                            <img src="https://crowdcontrol.live/favicon.ico" alt="Crowd Control">
+                        </div>
+                        <h3>Crowd Control</h3>
+                        <p>Interactive platform that lets viewers affect your gameplay in real-time.</p>
+                        <div class="alert-features">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>Real-time game interaction</li>
+                                <li>Multiple game support</li>
+                                <li>Custom effects creation</li>
+                                <li>Viewer engagement tools</li>
+                                <li>Stream integration</li>
+                            </ul>
+                        </div>
+                        <a href="https://crowdcontrol.live" class="alert-link" target="_blank">
+                            Visit Crowd Control
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
                     </div>
 
-                    <div class="setup-steps">
-                        <h3>Audio Settings</h3>
-                        <ol>
-                            <li>Set up your microphone input</li>
-                            <li>Configure desktop audio capture</li>
-                            <li>Set up audio filters (noise suppression, compression)</li>
-                            <li>Balance your audio levels</li>
-                            <li>Test your audio setup</li>
-                        </ol>
+                    <!-- Stream Up -->
+                    <div class="alert-item">
+                        <div class="alert-icon">
+                            <img src="https://streamup.com/favicon.ico" alt="Stream Up">
+                        </div>
+                        <h3>Stream Up</h3>
+                        <p>Interactive alerts and overlays platform for streamers.</p>
+                        <div class="alert-features">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>Custom alerts and overlays</li>
+                                <li>Real-time interactions</li>
+                                <li>Multiple platform support</li>
+                                <li>Easy integration</li>
+                                <li>Viewer engagement tools</li>
+                            </ul>
+                        </div>
+                        <a href="https://streamup.com" class="alert-link" target="_blank">
+                            Visit Stream Up
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
                     </div>
 
-                    <div class="note">
-                        <p><strong>Note:</strong> For optimal performance, use a dedicated streaming PC or a powerful single PC setup. Consider using NVENC (NVIDIA) or AMD VCE for encoding to reduce CPU load.</p>
+                    <!-- Stream Luds -->
+                    <div class="alert-item">
+                        <div class="alert-icon">
+                            <img src="https://streamluds.com/favicon.ico" alt="Stream Luds">
+                        </div>
+                        <h3>Stream Luds</h3>
+                        <p>Custom alerts and overlays for streamers with unique designs.</p>
+                        <div class="alert-features">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>Custom alert designs</li>
+                                <li>Unique overlay templates</li>
+                                <li>Easy setup process</li>
+                                <li>Multiple style options</li>
+                                <li>Regular updates</li>
+                            </ul>
+                        </div>
+                        <a href="https://streamluds.com" class="alert-link" target="_blank">
+                            Visit Stream Luds
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
                     </div>
-                </div>
 
-                <!-- Additional Tips -->
-                <div class="setup-card">
-                    <h2>Additional Tips</h2>
-                    <div class="setup-steps">
-                        <h3>Best Practices</h3>
-                        <ol>
-                            <li>Use a wired internet connection for stability</li>
-                            <li>Close unnecessary background applications</li>
-                            <li>Monitor your CPU and GPU usage</li>
-                            <li>Keep your streaming software updated</li>
-                            <li>Use stream overlays and alerts</li>
-                            <li>Engage with your chat</li>
-                            <li>Test your setup before going live</li>
-                        </ol>
+                    <!-- LiveReacting -->
+                    <div class="alert-item">
+                        <div class="alert-icon">
+                            <img src="https://livereacting.com/favicon.ico" alt="LiveReacting">
+                        </div>
+                        <h3>LiveReacting</h3>
+                        <p>Interactive overlays and alerts for live streaming.</p>
+                        <div class="alert-features">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>Interactive overlays</li>
+                                <li>Real-time alerts</li>
+                                <li>Multiple platform support</li>
+                                <li>Custom designs</li>
+                                <li>Easy integration</li>
+                            </ul>
+                        </div>
+                        <a href="https://livereacting.com" class="alert-link" target="_blank">
+                            Visit LiveReacting
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- SignalWire -->
+                    <div class="alert-item">
+                        <div class="alert-icon">
+                            <img src="https://signalwire.com/favicon.ico" alt="SignalWire">
+                        </div>
+                        <h3>SignalWire</h3>
+                        <p>Advanced communication platform for streamers and developers.</p>
+                        <div class="alert-features">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>Custom communication tools</li>
+                                <li>API integration</li>
+                                <li>Real-time interactions</li>
+                                <li>Multiple platform support</li>
+                                <li>Developer-friendly</li>
+                            </ul>
+                        </div>
+                        <a href="https://signalwire.com" class="alert-link" target="_blank">
+                            Visit SignalWire
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>

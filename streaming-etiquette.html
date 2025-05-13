@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streaming Etiquette - Streamer Tips</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #0B0C10;
+            color: #C5C6C7;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: #1F2833;
+            padding: 1.2rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid #45A29E;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+
+        .logo {
+            color: #66FCF1;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
+            text-shadow: 0 4px 8px rgba(102, 252, 241, 0.3);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: #C5C6C7;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #66FCF1, #45A29E);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #66FCF1;
+            transform: translateY(-2px);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px - 200px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #1F2833 0%, #0B0C10 100%);
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid #45A29E;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(102, 252, 241, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #C5C6C7;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #66FCF1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            color: #C5C6C7;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .guide-section {
+            background: rgba(31, 40, 51, 0.95);
+            border-radius: 15px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid #45A29E;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .guide-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .guide-section h2 {
+            color: #66FCF1;
+            font-size: 2.4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .guide-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #45A29E;
+            border-radius: 2px;
+        }
+
+        .guide-section p {
+            color: #C5C6C7;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .guide-section ul {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .guide-section ul li {
+            color: #C5C6C7;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .guide-section ul li:hover {
+            transform: translateX(5px);
+        }
+
+        .dos-donts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .dos-card, .donts-card {
+            background: rgba(31, 40, 51, 0.95);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid #45A29E;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .dos-card:hover, .donts-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 252, 241, 0.1);
+        }
+
+        .dos-card h3, .donts-card h3 {
+            color: #66FCF1;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .video-card {
+            background: rgba(31, 40, 51, 0.95);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #45A29E;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 252, 241, 0.1);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            padding: 1.5rem;
+        }
+
+        .video-info h3 {
+            color: #66FCF1;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-info p {
+            color: #C5C6C7;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .guide-section {
+                padding: 2rem;
+            }
+
+            .nav-menu {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">Streamer Tips</a>
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="streaming-pc.html">Streaming PC</a>
+                <a href="peripherals.html">Peripherals</a>
+                <a href="camera-gear.html">Camera Gear</a>
+                <a href="lighting-equipment.html">Lighting</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Streaming Etiquette: A Beginner's Guide</h1>
+                <p>Learn how to create a welcoming community and grow your channel</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="guide-section">
+                <p>Embarking on your streaming journey is exciting! Beyond the technical setup, understanding and practicing good streaming etiquette is crucial for building a welcoming community and growing your channel.</p>
+
+                <div class="dos-donts-grid">
+                    <div class="dos-card">
+                        <h3>✅ Do's</h3>
+                        <ul>
+                            <li><strong>Engage with Your Viewers</strong><br>Interact with your audience by responding to chat messages, asking questions, and acknowledging new followers or subscribers. This interaction makes viewers feel valued and encourages them to return.</li>
+                            <li><strong>Maintain a Consistent Schedule</strong><br>Establish and adhere to a streaming schedule. Consistency helps your audience know when to tune in and builds trust over time.</li>
+                            <li><strong>Prepare Before Going Live</strong><br>Test your equipment, check your internet connection, and have a plan for your stream's content. Being prepared minimizes technical issues and keeps your stream professional.</li>
+                            <li><strong>Be Respectful and Inclusive</strong><br>Create a safe space for all viewers by being respectful and avoiding offensive language or behavior. Encourage inclusivity and be mindful of your audience's diversity.</li>
+                            <li><strong>Moderate Your Chat</strong><br>Use moderation tools or assign trusted moderators to keep your chat friendly and free from spam or harassment. A well-moderated chat enhances the viewing experience for everyone.</li>
+                        </ul>
+                    </div>
+
+                    <div class="donts-card">
+                        <h3>❌ Don'ts</h3>
+                        <ul>
+                            <li><strong>Self-Promote in Other Streams</strong><br>Avoid advertising your stream in someone else's chat unless invited to do so. It's considered disrespectful and can harm your reputation.</li>
+                            <li><strong>Focus Solely on Viewer Counts</strong><br>Constantly checking viewer numbers can be distracting. Instead, concentrate on delivering quality content and engaging with your current audience.</li>
+                            <li><strong>Ignore Your Chat</strong><br>Failing to acknowledge your viewers can make them feel unappreciated. Even a simple greeting can go a long way in building community.</li>
+                            <li><strong>Overuse Alerts and Sounds</strong><br>While alerts for followers or donations are great, excessive use can be disruptive. Keep them balanced to maintain the flow of your stream.</li>
+                            <li><strong>Neglect Feedback</strong><br>Constructive criticism from your audience can help you improve. Be open to feedback and willing to make adjustments to enhance your stream.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2>🎥 Helpful Video Tutorials</h2>
+                <p>To further assist you, here are some video tutorials that provide insights into streaming etiquette:</p>
+                
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/zmRncBHl51E" title="3 Streaming Do's and Don'ts" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h3>3 Streaming Do's and Don'ts</h3>
+                            <p>Essential tips for maintaining good streaming etiquette</p>
+                        </div>
+                    </div>
+
+                    <div class="video-card">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/Vvu4dLVgj7M" title="Live Stream Viewer Etiquette" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h3>Live Stream Viewer Etiquette</h3>
+                            <p>How to not annoy your favorite streamers</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p>By adhering to these guidelines, you'll create a positive environment that attracts and retains viewers. Remember, streaming is not just about playing games or sharing content; it's about building a community. Stay authentic, be patient, and enjoy the journey!</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html> 

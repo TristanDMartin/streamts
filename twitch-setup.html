@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitch Account Setup - Streamer Tips</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header Styles */
+        header {
+            background: #243340;
+            padding: 1.2rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(242, 242, 242, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #D92525;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #D92525;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px - 200px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: #243340;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 4rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .guide-section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .guide-section h2 {
+            color: #243340;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .guide-section p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .guide-section ol {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .guide-section ol li {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            margin: 2rem 0;
+            border-radius: 10px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .note-box {
+            background: #f8f9fa;
+            border-left: 4px solid #D92525;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .note-box h3 {
+            color: #243340;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">Streamer Tips</a>
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="streaming-pc.html">Streaming PC</a>
+                <a href="peripherals.html">Peripherals</a>
+                <a href="camera-gear.html">Camera Gear</a>
+                <a href="lighting-equipment.html">Lighting</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>How to Create a Twitch Account</h1>
+                <p>Step-by-step guide to setting up your Twitch presence</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="guide-section">
+                <p>Twitch is a leading platform for live streaming, especially popular among gamers and content creators.</p>
+
+                <h2>Steps:</h2>
+                <ol>
+                    <li>Visit Twitch.tv and click the Sign Up button at the top-right corner.</li>
+                    <li>Fill in your details: Choose a unique username, create a password, enter your date of birth, and provide a valid email address.</li>
+                    <li>Verify your email: Check your inbox for a verification email from Twitch and follow the instructions to confirm your account.</li>
+                    <li>Enable Two-Factor Authentication (2FA): This is required to start streaming. Go to your Security Settings and follow the prompts to set up 2FA using your phone number.</li>
+                </ol>
+
+                <div class="note-box">
+                    <h3>Important Note</h3>
+                    <p>Two-Factor Authentication (2FA) is required for streaming on Twitch. Make sure to set this up as soon as possible after creating your account.</p>
+                </div>
+
+                <h2>Video Tutorial</h2>
+                <p>For a visual guide, check out this tutorial:</p>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/iC0IAFr-a3M" title="How to Create a Twitch Account" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html> 

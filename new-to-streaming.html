@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New to Streaming - Streamer Tips</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header Styles */
+        header {
+            background: #243340;
+            padding: 1.2rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(242, 242, 242, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #D92525;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #D92525;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px - 200px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: #243340;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 4rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .guide-section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .guide-section h2 {
+            color: #243340;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .guide-section p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .guide-section ul {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .guide-section ul li {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .guide-section ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #D92525;
+        }
+
+        .quote-box {
+            background: #f8f9fa;
+            border-left: 4px solid #D92525;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        .emoji-icon {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">Streamer Tips</a>
+            <nav class="nav-menu">
+                <a href="index.html">Home</a>
+                <a href="streaming-pc.html">Streaming PC</a>
+                <a href="peripherals.html">Peripherals</a>
+                <a href="camera-gear.html">Camera Gear</a>
+                <a href="lighting-equipment.html">Lighting</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>New to Streaming</h1>
+                <p>Your journey to becoming a successful streamer starts here</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="guide-section">
+                <p>Welcome to your streaming journey! Whether you're here to share your gameplay, your creativity, or just to connect with others—you've already taken the most important step: starting. Becoming a streamer might feel overwhelming at first, but the truth is, everyone starts somewhere, and there's no "perfect" way to begin. What matters most is showing up, staying consistent, and having fun along the way.</p>
+
+                <h2><span class="emoji-icon">💡</span> Getting Started</h2>
+                <p>You don't need expensive gear or a massive audience to begin streaming. All you need is:</p>
+                <ul>
+                    <li>A basic PC or console</li>
+                    <li>Stable internet</li>
+                    <li>A platform like Twitch, YouTube, or Kick</li>
+                    <li>Free software like OBS Studio or Streamlabs</li>
+                    <li>A microphone (even a basic one will do)</li>
+                </ul>
+                <p>Start simple. Stream the games you love, talk to your viewers (even if it's just one), and get comfortable being live. Over time, you'll improve naturally by learning what works for you and your audience.</p>
+
+                <h2><span class="emoji-icon">🔧</span> Learn As You Go</h2>
+                <p>Nobody becomes a pro overnight. Every successful streamer once streamed to zero viewers. Use this early time to experiment, practice speaking on camera, set up your stream layout, and test different content ideas. Watch your own VODs and take notes. Celebrate your small wins—like your first follower or your first chat message. They matter.</p>
+
+                <h2><span class="emoji-icon">🚀</span> Stay Motivated</h2>
+                <p>Streaming can be tough, but don't let slow growth discourage you. Every big creator was once where you are now. Your energy, your vibe, your story—they're all unique, and someone out there will connect with it. Focus on community over numbers, progress over perfection, and consistency over speed. You're building something real, and it takes time.</p>
+
+                <div class="quote-box">
+                    "You don't have to be great to start, but you have to start to be great."
+                </div>
+
+                <p>Welcome to the world of streaming—you've got this.</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html> 
